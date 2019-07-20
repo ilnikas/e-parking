@@ -8,36 +8,44 @@
         <meta name="description" content="Αναζήτηση ελεύθερων θέσεων parking σε πόλεις">
         <meta name="keywords" content="parking, θέσεις, αναζήτηση">
         <link rel="stylesheet" href="main.css" type="text/css">
+
         <!-- TODO link js file(s) and(?) icons-->
         <title> 
             e-parking 
         </title>
+
     </head>
 
-    <body>
+    <body onload="setHeightMain()" onresize="setHeightMain()">
         <div id="header">
             <span id="logo">
                 E-parking
             </span>
             <!-- Creating three-lined navigation button-->
             <a href="#" class="nav">
-                <div class="one"></div>
-                <div class="two"></div>
-                <div class="three"></div>
+                <!-- Three divs are the three lines of the nav menu-->
+                <div ></div>
+                <div id="smaller"></div>
+                <div ></div>
             </a>
         </div>
 
         <div id="main">
-            <button id="mainButton">
+            <a id="mainButton" href="#">
                 Πάρκαρε τώρα!
-            </button>
+            </a>
+            <a id="info" href="#">
+                Μάθε πώς λειτουργεί
+            </a>
 
+        </div>
+
+        <div id="deyteri">
+            <p>Με λένε Ηλία!</p>
         </div>
 
     </body>
 
-
-
-
+    <script src="js/setHeightMain.js"></script>
 
 </html>

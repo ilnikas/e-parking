@@ -5,20 +5,26 @@ body {
     padding: 0;
 }
 
+/*______________________HEADER____________________*/
+
 #header {
     background-color: darkblue;
-    color: white;
-    font-size: 2em;
     max-width: 100%;
-    padding: 3px;
-    height: 35px;
+    height: 50px;
+}
+
+#header #logo {
+    color: white;
+    font-size: 1.5em;
+    line-height: 50px;
+    margin: 0 0 0 6px;
 }
 
 
 .nav div {
     background-color: white;
-    height: 3px;
-    margin-top: 7px;
+    height: 2.5px;
+    margin-top: 4.5px;
     border-radius: 25px;
 }
 
@@ -26,15 +32,37 @@ body {
     width: 10%;
     display: block;
     float: right;
+    padding: 7px 6px 6px;
+    margin-top: 5px;
+    outline: 0;
 }
+
+.nav #smaller {
+    width: 70%;
+}
+
+.nav:hover #smaller {
+    width: 100%;
+    transition: 0.2s;
+}
+
+
 
 /* TODO INSERT MEDIA QUERRY FOR DESKTOP VERSION ON HEADER (HIDE NAV) */
 
+
+
+/*______________________END OF HEADER____________________________*/
+
+
+
+/*______________________________________MAIN_PAGE__________________________*/
+
 #main {
     max-width: 100%;
-    height: 93vh; 
     background-color: brown;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-image: url("img/main.png");
@@ -42,16 +70,70 @@ body {
 }
 
 #mainButton {
-    background-color: red;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.1em;
+    border: 1px solid black;
+    padding: 7px;
+    background-color: darkred;
     color: white;
-    border: none;
-    font-size: 1.5em;
-    border: 2px solid black;
-    border-radius: 15px;
+    border-radius: 100px;
+    outline: 0;
 }
 
 #mainButton:hover {
     box-shadow: 2px 5px 4px darkgrey;
-    cursor: pointer;
-    transition: 0.3s;
+    filter: saturate(130%);
+    transition: 0.1s;
 }
+
+#mainButton:active {
+    transform: translateY(5px);
+    filter: saturate(150%);
+}
+
+#info {
+    display: inline-block;
+    position:absolute;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: blue;
+    text-align: center;
+    margin-top: 150px;
+    outline: 0;
+}
+
+#info:hover {
+    text-decoration: underline;
+}
+
+#info:active {
+    transform: translateY(1px);
+}
+
+#logo:hover {
+    cursor: default;
+}
+
+
+/*_____________________END_OF_MAIN_PAGE___________________________*/
+
+/*_______________TESTING SECOND PAGE LAYOUT_____________*/
+
+#deyteri {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkcyan;
+    height: 100vh;
+}
+
+#deyteri p {
+    text-align: center;
+    font-size: 2em;
+    color: white;
+}
+
+/*_______________________*/
