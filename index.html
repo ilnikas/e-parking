@@ -22,12 +22,18 @@
                 E-parking
             </span>
             <!-- Creating three-lined navigation button-->
-            <a href="#" class="nav">
+            <a href="#" onclick="toggleMenu()" id="nav">
                 <!-- Three divs are the three lines of the nav menu-->
-                <div ></div>
-                <div id="smaller"></div>
-                <div ></div>
-            </a>
+                <div class="menu-line"> </div>
+                <div class="menu-line" id="smaller"></div>
+                <div class="menu-line"> </div>
+            </button>
+            <div id="dropdown-content">
+                <a class="dropdownLink" href="#">Σύνδεση</a>
+                <a class="dropdownLink" href="#">Συχνές ερωτήσεις</a>
+                <a class="dropdownLink" href="#">Πληροφορίες για εμάς</a>
+                <a class="dropdownLink" href="#">Επικοινωνία</a>
+            </div>
         </div>
 
         <div id="main">
@@ -47,5 +53,6 @@
     </body>
 
     <script src="js/setHeightMain.js"></script>
+    <script src="js/dropdownMenuToggle.js"></script>
 
 </html>

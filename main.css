@@ -8,9 +8,10 @@ body {
 /*______________________HEADER____________________*/
 
 #header {
-    background-color: darkblue;
+    background-color: #283747;
     max-width: 100%;
     height: 50px;
+    position: relative;
 }
 
 #header #logo {
@@ -21,30 +22,64 @@ body {
 }
 
 
-.nav div {
+#nav .menu-line {
     background-color: white;
-    height: 2.5px;
-    margin-top: 4.5px;
+    height: 2px;
+    margin-top: 4px;
     border-radius: 25px;
 }
 
-.nav {
+#nav {
     width: 10%;
     display: block;
-    float: right;
-    padding: 7px 6px 6px;
-    margin-top: 5px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 5px;
     outline: 0;
+    
 }
 
-.nav #smaller {
+#nav #smaller {
     width: 70%;
 }
 
-.nav:hover #smaller {
-    width: 100%;
-    transition: 0.2s;
+
+/*_________________________Styling__dropdown_____________________  TODO fix size.. overlapps with main button*/
+
+#dropdown-content {
+    display: none; /* TODO transition when appears */
+    background-color: #273746;
+    position: absolute;
+    width: 40vw;
+    right: 0;
+    z-index: 1;
+    box-shadow: 0px 6px 8px 0px rgba(0,0,0,0.2);
+    overflow: hidden;
 }
+
+.dropdownLink {
+    width: 100%;
+    color: white;
+    display: block;
+    font-size: 1em;
+    text-align: center;
+    border-bottom: 1px solid white;
+    text-decoration: none;
+    margin-top: 7px;
+    margin-right: 7px;
+    padding: 2px;
+    outline: 0;    
+}
+
+#dropdown-content a:active {
+    background-color: #1B2631;
+}
+
+
+
+/*______________________________----____________________*/
 
 
 
@@ -60,12 +95,12 @@ body {
 
 #main {
     max-width: 100%;
-    background-color: brown;
+    background-color: #85929E;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url("img/main.png");
+    /*background-image: url("img/main.png");*/
     background-repeat: repeat;
 }
 
@@ -82,34 +117,27 @@ body {
     outline: 0;
 }
 
-#mainButton:hover {
-    box-shadow: 2px 5px 4px darkgrey;
-    filter: saturate(130%);
-    transition: 0.1s;
-}
 
 #mainButton:active {
-    transform: translateY(5px);
-    filter: saturate(150%);
+    filter: saturate(120%);
 }
 
 #info {
     display: inline-block;
     position:absolute;
-    font-size: 0.8em;
+    font-size: 0.78em;
     text-decoration: none;
-    color: blue;
+    color: #283747;
     text-align: center;
-    margin-top: 150px;
+    margin-top: 30vh;
     outline: 0;
+    font-weight: bold;
+    max-width: 20%;
 }
 
-#info:hover {
-    text-decoration: underline;
-}
 
 #info:active {
-    transform: translateY(1px);
+    text-decoration: underline;
 }
 
 #logo:hover {
