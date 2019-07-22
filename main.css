@@ -95,13 +95,14 @@ body {
 
 #main {
     max-width: 100%;
-    background-color: #85929E;
+    /*background-color: #85929E;*/
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /*background-image: url("img/main.png");*/
-    background-repeat: repeat;
+    background-image: url("img/main.jpg");
+	background-size: 100%;
+	background-position: center;
 }
 
 #mainButton {
