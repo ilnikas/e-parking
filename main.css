@@ -105,7 +105,8 @@ body {
     justify-content: center;
     background-image: url("img/main_desk.jpg");
 	background-size: cover;
-	background-position: center;
+    background-position: center;
+    height: calc(100vh - 50px);
 }
 
 #mainButton {
