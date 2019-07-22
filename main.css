@@ -31,6 +31,7 @@ body {
 
 #nav {
     width: 10%;
+	max-width: 10px;
     display: block;
     position: absolute;
     right: 0;
@@ -43,6 +44,7 @@ body {
 
 #nav #smaller {
     width: 70%;
+	margin-left: 1px;
 }
 
 
