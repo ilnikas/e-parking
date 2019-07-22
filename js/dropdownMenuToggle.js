@@ -1,10 +1,10 @@
 function toggleMenu(){
     var dropdownContent = document.getElementById("dropdown-content");
-    if (dropdownContent.style.display == "block") {
-        dropdownContent.style.display = "none";
+    if (dropdownContent.style.visibility == "visible") {
+        dropdownContent.style.visibility = "hidden";
+        dropdownContent.style.opacity = "0";
     } else {
-        dropdownContent.style.display = "block";
+        dropdownContent.style.visibility = "visible";
+        dropdownContent.style.opacity = "0.8";
     }
 }
-
-//TODO ADD function to dissapear menu when link is clicked
