@@ -80,6 +80,10 @@ body {
     background-color: #1B2631;
 }
 
+#dropdown-content a:hover {
+	background-color: #327da8;
+}
+
 
 
 /*______________________________----____________________*/
