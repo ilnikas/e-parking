@@ -103,14 +103,14 @@ body {
 #main {
     max-width: 100%;
     /*background-color: #85929E;*/
-    display: flex;
+    display: flex; /* So everything will be centered */
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-image: url("img/main_alt");
 	background-size: cover;
     background-position: center;
-    height: calc(100vh - 50px);    
+    height: calc(100vh - 50px);    /* Nav bar is 50px so height of main is the rest to fill up the page */
 }
 
 #mainButton {
