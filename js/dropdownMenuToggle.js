@@ -1,5 +1,15 @@
-function toggleMenu(){
+function hideMenu(){
     var dropdownContent = document.getElementById("dropdown-content");
+    dropdownContent.style.visibility = "hidden";
+    dropdownContent.style.opacity = "0";
+}
+
+//run hideMenu() function once to initialize the variables to state "hidden"
+
+hideMenu();
+
+function toggleMenu(){
+   var dropdownContent = document.getElementById("dropdown-content");
     if (dropdownContent.style.visibility == "visible") {
         dropdownContent.style.visibility = "hidden";
         dropdownContent.style.opacity = "0";
@@ -7,10 +17,4 @@ function toggleMenu(){
         dropdownContent.style.visibility = "visible";
         dropdownContent.style.opacity = "0.8";
     }
-}
-
-function hideMenu(){
-    var dropdownContent = document.getElementById("dropdown-content");
-    dropdownContent.style.visibility = "hidden";
-    dropdownContent.style.opacity = "0";
 }
