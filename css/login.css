@@ -1,5 +1,13 @@
 * { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); } /*Removes outline on tapping link for mobile */
 
+
+
+*::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
 body {
     font-size: 100%;
     margin: 0;
@@ -15,6 +23,7 @@ body {
     /*background-image: url("img/login.jpg");*/
     background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url("img/login.jpg"); /*Using gradient to darken image so login form will be clearly vissible */
     background-size: cover;
+    min-height: 630px; /* To avoid unpredictable effects when android keyboard pops over the screen */
     height: 100vh;
     max-width: 100%;
     position: relative;
