@@ -103,10 +103,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url("img/main_desk.jpg");
+    background-image: url("img/main_alt");
 	background-size: cover;
     background-position: center;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 50px);    
 }
 
 #mainButton {
@@ -144,7 +144,7 @@ body {
 	border-radius: 20px;
     padding: 5px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    bottom: 8%;
+    bottom: 10%;
 }
 
 
