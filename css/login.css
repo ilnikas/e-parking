@@ -1,0 +1,89 @@
+* { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); } /*Removes outline on tapping link for mobile */
+
+body {
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*background-image: url("img/login.jpg");*/
+    background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url("img/login.jpg"); /*Using gradient to darken image so login form will be clearly vissible */
+    background-size: cover;
+    height: 100vh;
+    max-width: 100%;
+    position: relative;
+}
+
+#homePageLogo {
+    position: absolute;
+    top: 2%;
+    left: 6px;
+}
+
+#homePageLogo a {
+    font-size: 1.5em;
+    color: white;
+    text-decoration: none;
+    text-emphasis: bold;
+    outline: 0;
+}
+
+#welcomeMessage {
+    color: white;
+    font-size: 2em;
+    position: absolute;
+    top: 20%;
+    text-align: center;
+}
+
+
+#mainPageLogin {
+    position: absolute;
+    top: 70%;
+    transform: translateY(-70%);
+}
+
+input {
+    display: block;
+    margin: auto;
+}
+
+.inputField {
+    margin-bottom: 15%;
+    opacity: 0.5;
+}
+
+#allInputs {
+    margin-top: 40%;
+    padding: 35px 35px 0 35px;
+    border-top: 1px solid white;
+}
+
+
+
+#submitButton {
+    border: 1px solid white;
+    font-size: 1.5em;
+    margin-top: 60%;
+    padding: 8%;
+    border-radius: 30px;
+    outline: 0;
+    color: #6681BE;
+    text-emphasis: bold;
+    background: transparent;
+}
+
+#submitButton:hover {
+    cursor: pointer; /* For desktop version */
+}
+
+#submitButton:active {
+    background-color: darkgrey;
+}
+
