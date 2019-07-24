@@ -46,7 +46,11 @@ body {
     outline: 0;
 }
 
-/*_________________________Styling__dropdown_____________________  TODO fix size.. overlapps with main button*/
+#nav-bar-desktop {
+    display: none;
+}
+
+/*_________________________Styling__dropdown_____________________ */
 
 #dropdown-content {
     /*display: none; */  
@@ -91,6 +95,52 @@ body {
 
 
 /* TODO INSERT MEDIA QUERRY FOR DESKTOP VERSION ON HEADER (HIDE NAV) */
+@media only screen and (min-width: 630px){
+    #nav {
+        display: none; /*Hiding three line menu icon*/
+    }
+
+    #dropdown-content {
+        display: none; /* New html element is used for nav bar in desktop mode */
+    }
+
+    #nav-bar-desktop {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+    }
+
+    #nav-bar-desktop > a {
+        text-decoration: none;
+        text-align: right;
+        color: white;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        padding-right: 1vw;
+        padding-left: 1vw;
+        font-size: 0.9em;
+        border-right: 1px solid white;
+        outline: 0;
+    }
+
+    #nav-bar-desktop #last-desktop-link {
+        border-right: none
+    }
+
+    #nav-bar-desktop > a:active {
+        color: #327da8;
+    }
+
+    #nav-bar-desktop > a:hover {
+        color: #327da8;
+    }
+
+    #logo:hover {
+        cursor: default;
+    }
+
+}   
 
 
 
@@ -110,7 +160,7 @@ body {
     background-image: url("img/main_alt");
 	background-size: cover;
     background-position: center;
-    height: calc(100vh - 50px);    /* Nav bar is 50px so height of main is the rest to fill up the page */
+    height: calc(100vh - 50px);    /* Header bar is 50px so height of main is the rest to fill up the page */
 }
 
 #mainButton {
@@ -156,9 +206,7 @@ body {
     filter: saturate(130%);
 }
 
-#logo:hover {
-    cursor: default; /* For desktop version */
-}
+
 
 
 /*_____________________END_OF_MAIN_PAGE___________________________*/

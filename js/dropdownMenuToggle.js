@@ -4,7 +4,6 @@ function hideMenu(){
     dropdownContent.style.opacity = "0";
 }
 
-//run hideMenu() function once to initialize the variables to state "hidden"
 
 hideMenu();
 
