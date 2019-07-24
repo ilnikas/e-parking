@@ -94,7 +94,7 @@ body {
 
 
 
-/* TODO INSERT MEDIA QUERRY FOR DESKTOP VERSION ON HEADER (HIDE NAV) */
+/*INSERTING NAV BAR FOR DESKTOP VERSION AND SMALL DESIGN CHANGES FOR DESKTOP */
 @media only screen and (min-width: 630px){
     #nav {
         display: none; /*Hiding three line menu icon*/
@@ -140,6 +140,14 @@ body {
         cursor: default;
     }
 
+    #mainButton:hover {
+        filter: saturate(120%);
+    }
+
+    #info:hover {
+        filter: saturate(120%);
+    }
+
 }   
 
 
@@ -179,7 +187,7 @@ body {
 
 
 #mainButton:active {
-    filter: saturate(120%);
+    filter: saturate(130%);
 }
 
 #info {
