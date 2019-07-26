@@ -98,8 +98,75 @@ body {
 
 
 
+
+
+
+
+/*______________________END OF HEADER____________________________*/
+
+
+
+/*______________________________________MAIN_PAGE__________________________*/
+
+#main {
+    max-width: 100%;
+    /*background-color: #85929E;*/
+    display: flex; /* So everything will be centered */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("img/main");
+	background-size: cover;
+    background-position: center;
+    height: calc(100vh - 50px);    /* Header bar is 50px so height of main is the rest to fill up the page */
+}
+
+#mainButton {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.1em;
+    border: 1px solid black;
+    padding: 6px;
+    margin-top: 10vh;
+    background-color: firebrick;
+    color: white;
+    border-radius: 50px;
+    outline: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+#mainButton:active {
+    filter: saturate(130%);
+}
+
+#info {
+    display: inline-block;
+    position:absolute;
+    font-size: 0.78em;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    margin-top: 35vh;
+    outline: 0;
+    font-weight: normal;
+    max-width: 40%;
+    background-color: indigo;
+    border: 1px solid black;
+	border-radius: 20px;
+    padding: 5px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    bottom: 20vh;
+}
+
+
+#info:active {
+    filter: saturate(130%);
+}
+
 /*INSERTING NAV BAR FOR DESKTOP VERSION AND SMALL DESIGN CHANGES FOR DESKTOP */
-@media only screen and (min-width: 630px){
+@media only screen and (min-width: 769px){  /* Most tablets will have the mobile version */
     #nav {
         display: none; /*Hiding three line menu icon*/
     }
@@ -152,73 +219,16 @@ body {
         filter: saturate(120%);
     }
 
+    #mainButton {
+        margin-top: 15vh;
+        padding: 10px;
+    }
+
+    #info {
+        bottom: 11vh;
+    }
+
 }   
-
-
-
-/*______________________END OF HEADER____________________________*/
-
-
-
-/*______________________________________MAIN_PAGE__________________________*/
-
-#main {
-    max-width: 100%;
-    /*background-color: #85929E;*/
-    display: flex; /* So everything will be centered */
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-image: url("img/main");
-	background-size: cover;
-    background-position: center;
-    height: calc(100vh - 50px);    /* Header bar is 50px so height of main is the rest to fill up the page */
-}
-
-#mainButton {
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    font-size: 1.1em;
-    border: 1px solid black;
-    padding: 10px;
-    background-color: firebrick;
-    color: white;
-    border-radius: 50px;
-    outline: 0;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-
-#mainButton:active {
-    filter: saturate(130%);
-}
-
-#info {
-    display: inline-block;
-    position:absolute;
-    font-size: 0.78em;
-    text-decoration: none;
-    color: white;
-    text-align: center;
-    margin-top: 35vh;
-    outline: 0;
-    font-weight: normal;
-    max-width: 40%;
-    background-color: indigo;
-    border: 1px solid black;
-	border-radius: 20px;
-    padding: 5px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    bottom: 10%;
-}
-
-
-#info:active {
-    filter: saturate(130%);
-}
-
-
 
 
 /*_____________________END_OF_MAIN_PAGE___________________________*/

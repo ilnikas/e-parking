@@ -8,6 +8,10 @@ body {
     color: #a9a9b3;
 }
 
+#wrapper {
+    background-color: #292A2D;
+}
+
 #header {
     background-color: #252627;
     height: 50px;
@@ -39,6 +43,12 @@ body {
     background-color: #292A2D;
     min-height: calc(100vh - 50px);
     border-top: 1px solid black;
+    padding: 0 2.5vh 0 2.5vh;  /* TODO change to 5vh for desktop version */
+}
+
+#map > img {
+    height: 300px;
+    max-width: 66.6vw;
 }
 
 
