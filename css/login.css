@@ -2,17 +2,14 @@
 
 
 
-*::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
+
 
 body {
     font-size: 100%;
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    color: #A9A9B3;
 }
 
 #container {
@@ -20,8 +17,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /*background-image: url("img/login.jpg");*/
-    background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url("img/login.jpg"); /*Using gradient to darken image so login form will be clearly vissible */
+    /*background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url("img/login.jpg");*/ /*Using gradient to darken image so login form will be clearly vissible */
+    background-color: #292A2D;
     background-size: cover;
     min-height: 630px; /* To avoid unpredictable effects when android keyboard pops over the screen */
     height: 100vh;
@@ -31,20 +28,27 @@ body {
 
 #homePageLogo {
     position: absolute;
-    top: 2%;
-    left: 6px;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 50px;
+    background-color: #252627;
+    border-bottom: 1px solid black;
 }
 
 #homePageLogo a {
     font-size: 1.5em;
-    color: white;
+    color: #A9A9B3;
     text-decoration: none;
     text-emphasis: bold;
     outline: 0;
+    line-height: 50px;
+    margin-left: 6px;
 }
 
 #welcomeMessage {
-    color: white;
+    color: #A9A9B3;
     font-size: 2em;
     position: absolute;
     top: 20%;
@@ -71,7 +75,7 @@ input {
 #allInputs {
     margin-top: 40%;
     padding: 35px 35px 0 35px;
-    border-top: 1px solid white;
+    border-top: 1px solid #A9A9B3;
 }
 
 
@@ -83,7 +87,8 @@ input {
     padding: 4%;
     border-radius: 10px;
     outline: 0;
-    color: #6681BE;
+    /*color: #6681BE;*/
+    color: darkorange;
     text-emphasis: bold;
     background: transparent;
 }
@@ -93,6 +98,6 @@ input {
 }
 
 #submitButton:active {
-    background-color: darkgrey;
+    background-color: grey;
 }
 

@@ -169,7 +169,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url("img/main_alt");
+    background-image: url("img/main");
 	background-size: cover;
     background-position: center;
     height: calc(100vh - 50px);    /* Header bar is 50px so height of main is the rest to fill up the page */

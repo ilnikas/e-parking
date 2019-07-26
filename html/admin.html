@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="el">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/admin.css" type="text/css">
+        <title>
+            e-parking | Admin
+        </title>
+
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <span id="logo">E-parking</span>
+                <a href="login.html" target="_self">Αποσύνδεση</a>
+            </div>
+            <div id="mainContainer">
+                <div id="firstPart">
+                    <div id="kmlLoad">
+                        <h4>Φόρτωση kml αρχείου</h4>
+                        <div id="uploadFile">
+                            <h4>Upload</h4>
+                            <div id="progressBar">
+                                This is a progress bar
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="deleteData" onclick="confirmDelete()">
+                        <h4>Διαγραφή δεδομένων πόλης</h4>
+                    </div>
+                </div>
+                <div id="secondPart">
+                    <h4>Στοιχεία πόλης</h4>
+                    <div id="map">
+
+                    </div>
+                    <div onclick="specifyTimeForSimulation()">
+                        <h4>Εκτέλεση εξομοίωσης</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
