@@ -1,13 +1,9 @@
 #faq {
     max-width: 100%;
-	display: flex;
-	flex-direction: column;
-    align-items: center;
-    justify-content: center;
     background-color: #184CB3;
 	background-image: linear-gradient(to right, #184CB3, #5F106C);
 	background-size: 100%;
-    height: 100vh;
+	min-height: 100vh;
 	color: white;
 }
 
@@ -21,12 +17,13 @@
 }
 
 .accordion {
-  background-color: #45BECA;
+  background-color: #3287A8;
+  margin-top: 2vh;
   color: white;
   font-weight: bold;
   cursor: pointer;
   padding: 18px;
-  width: 70%;
+  width: 100%;
   border: none;
   text-align: center;
   outline: none;
@@ -41,19 +38,16 @@
 }
 
 .accordion:after {
-  content: '\002B';
   color: white;
   font-weight: bold;
   float: right;
-  margin-left: 5px;
 }
 
-.active:after {
-  content: "\2212";
-}
+
 
 .panel {
-  width: 70%;
+  max-width: 100%;
+  margin-bottom: 2vh;
   padding: 0 18px;
   max-height: 0;
   overflow: hidden;
