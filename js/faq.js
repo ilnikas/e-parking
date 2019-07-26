@@ -15,7 +15,7 @@ for (i = 0; i < acc.length; i++) {
 
 function faqjump(){
 
-  acc[0].classList.toggle("active");
+  acc[0].classList.add("active");
   document.getElementById("ans1").style.maxHeight = "1000px";
 
 }
