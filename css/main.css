@@ -20,11 +20,14 @@ body {
     position: relative;
 }
 
-#header #logo {
-    color: white;
-    font-size: 1.5em;
-    line-height: 50px;
-    margin: 0 0 0 6px;
+#logo{
+    position:absolute;
+    top:0px; 
+    left:0px;
+	margin-top: 0.5em;
+    width:194px;
+    height:40px;
+    overflow:hidden;
 }
 
 #header #logo:hover {

@@ -1,8 +1,14 @@
 * { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); } /*Removes outline on tapping link for mobile */
 
-
-
-
+#logo{
+    position:absolute;
+    top:0px; 
+    left:0px;
+	margin-top: 0.5em;
+    width:194px;
+    height:40px;
+    overflow:hidden;
+}
 
 body {
     font-size: 100%;
