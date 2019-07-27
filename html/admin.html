@@ -16,30 +16,24 @@
                 <img id="logo" src="../css/img/logo.png">
                 <a href="login.html" target="_self">Αποσύνδεση</a>
             </div>
-            <div id="mainContainer">
-                <div id="firstPart">
-                    <div id="kmlLoad">
-                        <h4>Φόρτωση kml αρχείου</h4>
-                        <div id="uploadFile">
-                            <h4>Upload</h4>
-                            <div id="progressBar">
-                                This is a progress bar
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div id="deleteData" onclick="confirmDelete()">
-                        <h4>Διαγραφή δεδομένων πόλης</h4>
+            <div class="mainPart">
+                <h3 id="kmlLoadTitle">Φόρτωση kml αρχείου</h3>
+                <div id="uploadFile">
+                    <button onclick="findFile()">Upload file</button>
+                    <div id="progressBar">
+                        This is a progress bar
                     </div>
                 </div>
-                <div id="secondPart">
-                    <h4>Στοιχεία πόλης</h4>
+                <h3 id="dataDeleteTitle" onclick="confirmDelete()">Διαγραφή δεδομένων πόλης</h3>
+            </div>
+
+            <div class="mainPart">
+                <h3 id="cityDataTitle">Στοιχεία πόλης</h3>
+                <div id="mapAndButtons">
                     <div id="map">
-                        <img src="../css/img/map_trol.jpg" alt="I am the map">
+                        map
                     </div>
-                    <div onclick="specifyTimeForSimulation()">
-                        <h4>Εκτέλεση εξομοίωσης</h4>
-                    </div>
+                    <button onclick="specifyTimeForSimulation()">Εκτέλεση εξομοίωσης</button>
                 </div>
             </div>
         </div>
