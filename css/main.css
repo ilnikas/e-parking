@@ -236,9 +236,9 @@ body {
 
 /*_____________________END_OF_MAIN_PAGE___________________________*/
 
-/*_______________TESTING SECOND PAGE LAYOUT_____________*/
+/*_______________START_OF_MAP PAGE_____________*/
 
-#deyteri {
+#mapPage {
     max-width: 100%;
     display: flex;
     align-items: center;
@@ -247,10 +247,10 @@ body {
     height: 100vh;
 }
 
-#deyteri p {
-    text-align: center;
-    font-size: 2em;
-    color: white;
+#map {
+    height: 90vh;
+    width: 90vw;
 }
+
 
 /*_______________________*/
