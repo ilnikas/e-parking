@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="el">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="author" content="Ilias Nikas, Anastasios Xynos">
+        <meta name="description" content="Αναζήτηση ελεύθερων θέσεων parking σε πόλεις">
+        <meta name="keywords" content="parking, θέσεις, αναζήτηση">
+        <link rel="stylesheet" href="css/main.css" type="text/css">
+		<link rel="stylesheet" href="css/faq.css" type="text/css">
+		<link rel="stylesheet" href="css/about.css" type="text/css">
+
+        <!-- TODO link js file(s) and(?) icons-->
+        <title> 
+            e-parking 
+        </title>
+
+    </head>
+
+    <body>
+        <div id="header">
+			<img id="logo" src="css/img/logo.png">
+            <div id="nav-bar-desktop">
+                <a  href="html/login.html">Σύνδεση</a>
+                <a  href="#faq">Συχνές ερωτήσεις</a>
+                <a  href="#about">Πληροφορίες για εμάς</a>
+                <a  href="#contact" id="last-desktop-link">Επικοινωνία</a>
+            </div>
+            <!-- Creating three-lined navigation button-->
+            <a href="#" onclick="toggleMenu()" id="nav">
+                <!-- Three divs are the three lines of the nav menu-->
+                <div class="menu-line"> </div>
+                <div class="menu-line"></div>
+                <div class="menu-line"> </div>
+            </button>
+            <div id="dropdown-content">
+                <a class="dropdownLink" href="html/login.html" onclick="hideMenu()">Σύνδεση</a>
+                <a class="dropdownLink" href="#faq" onclick="hideMenu()">Συχνές ερωτήσεις</a>
+                <a class="dropdownLink" href="#about" onclick="hideMenu()">Πληροφορίες για εμάς</a>
+                <a class="dropdownLink" href="#contact" onclick="hideMenu()">Επικοινωνία</a>
+            </div>
+        </div>
+
+        <div id="main">
+            <a id="mainButton" href="#deyteri">
+                Πάρκαρε τώρα!
+            </a>
+            <a id="info" href="#quest1" onclick="faqjump()";>
+                Πώς λειτουργεί;
+            </a>
+
+        </div>
+
+        <div id="deyteri">
+            <p>Με λένε Ηλία!</p>
+        </div>
+
+	<div id="faq">
+		<br>
+		<h2>Συχνές ερωτήσεις</h2>
+
+		<button id="quest1" class="accordion">Πώς λειτουργεί;</button>
+		<div id="ans1" class="panel">
+  			<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+		</div>
+
+		<br>
+
+		<button class="accordion">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ?</button>
+		<div class="panel">
+ 			 <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+		</div>
+
+		<br>
+
+		<button class="accordion">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ?</button>
+		<div class="panel">
+  			<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+		</div>
+
+		<br>
+
+		<button class="accordion">Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ?</button>
+		<div class="panel">
+  			<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+		</div>
+
+		<br>
+
+		<button class="accordion">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ?</button>
+		<div class="panel">
+  			<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+		</div>
+
+		<br>
+
+	</div>
+	
+	<div id="about">
+		<h2>Σχετικά με εμάς</h2>
+		<div id="aboutText">
+		<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. t vero eos et accusamus et iusto odio dignissimos. t vero eos et accusamus et iusto odio dignissimos. t vero eos et accusamus et iusto odio dignissimos.
+		</p>		
+	</div>
+	</div>
+
+	<script src="js/faq.js"></script>
+    </body>
+
+    <script src="js/dropdownMenuToggle.js"></script>
+
+</html>

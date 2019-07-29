@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="el">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/admin.css" type="text/css">
+        <title>
+            e-parking | Admin
+        </title>
+
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <img id="logo" src="../css/img/logo.png">
+                <a href="login.html" target="_self">Αποσύνδεση</a>
+            </div>
+            <div class="mainPart">
+                <h3 id="kmlLoadTitle">Φόρτωση kml αρχείου</h3>
+                <div id="uploadFile">
+                    <div id="chooseFile">
+                        <input id="realButton" type="file" hidden="hidden">
+                        <button id="chooseFileButton">Επιλέξτε αρχείο</button>
+                        <span id="infoChooseFile">Δεν έχει επιλεγεί αρχείο</span>
+                    </div>
+                    <button id="uploadButton">Upload</button>
+                </div>
+                <h3 id="dataDeleteTitle">Διαγραφή δεδομένων πόλης</h3>
+                <div id="deleteData">
+                    <button id="deleteDataButton">Διαγραφή</button>
+                    <div id="deleteDataModal" class="modal">
+                        <div class="modal-content">
+                            <span class="closeModal">&times;</span>
+                            <p>Θα διαγραφούν όλα τα δεδομένα που αφορούν τον πληθυσμό και την ρυμοτομία της πόλης. Είστε σίγουρος πως θέλετε να συνεχίσετε;</p>
+                            <button id="confirmDelete" class="modalButton">Ναι</button>
+                            <button id="cancelDelete" class="modalButton">Όχι</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mainPart">
+                <h3 id="cityDataTitle">Στοιχεία πόλης</h3>
+                <div id="mapAndButtons">
+                    <div id="map">
+                        map
+                    </div>
+                    <button id="simulationButton">Εκτέλεση εξομοίωσης</button>
+                    <div id="simulationModal" class="modal">
+                        <div class="modal-content">
+                            <span class="closeModal">&times;</span>
+                            <p>Παρακαλώ εισάγεται ώρα για εκτέλεση εξομοίωσης</p>
+                            <div id="manualTime">
+                                <form action="dummy_php">
+                                    Ώρα <br>
+                                    <input type="text"> <br><br>ή<br><br>
+                                    Μετά από <br>
+                                    <input type="text"> <br> λεπτά <br><br>
+                                    <button type="submit" class="modalButton">Εκτέλεση</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="../js/chooseKmlFile.js"></script>
+    <script src="../js/confirmDataDelete.js"></script>
+    <script src="../js/startSimulation.js"></script>
+    
+
+</html>

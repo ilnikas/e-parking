@@ -1,0 +1,206 @@
+* { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); } /*Removes outline on tapping link for mobile */
+
+
+body {
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #a9a9b3;
+    text-align: center;
+}
+
+#wrapper {
+    background-color: #292A2D;
+    min-height: 100vh;
+    overflow: auto;
+}
+
+#header {
+    background-color: #252627;
+    height: 50px;
+    position: relative;
+}
+
+#logo{
+    position:absolute;
+    top:0px; 
+    left:0px;
+	margin-top: 0.5rem;
+    width:194px;
+    height:40px;
+    overflow:hidden;
+}
+
+#header > a {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: white;
+}
+
+#header > a:active {
+    color: #327da8;
+    outline: 0;
+}
+
+/*__________________________END OF HEADER__________________________*/
+
+.mainPart {
+    margin: 2.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h3 {
+    font-size: 1.5rem;
+    text-emphasis: bold;
+}
+
+button:active {
+    background-color: white;
+}
+
+button {
+    background: transparent;
+    color: darkorange;
+    border: 1px solid darkorange;
+    border-radius: 5px;
+    outline: 0;
+}
+
+#uploadFile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: calc(25vh - 50px);
+}
+
+#chooseFile {
+    border-bottom: 1px dashed #a9a9b3;
+    padding-bottom: 20px;
+}
+
+#chooseFileButton {
+    color: #d07200;
+    border: 1px solid #d07200;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+#uploadButton {
+    margin-top: 15px;
+    padding: 10px;
+}
+
+
+#infoChooseFile {
+    margin-left: 5px;
+    font-size: 1rem;
+}
+
+#deleteData {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: calc(25vh - 10px);
+}
+
+#deleteDataButton {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+
+
+
+
+/*___________________END OF FIRST PART________________________*/
+
+#mapAndButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#map {
+    height: 80vh;
+    width: 80vw;
+    border: 1px solid white;
+    margin-bottom: 10px;
+}
+
+#simulationButton {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+
+form > input {
+    width: 80%;
+}
+
+/*________________END OF SECOND PART____________________________*/
+
+
+
+
+
+/*___________________Styling the modals_________________*/
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black with opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: white;
+    margin: 30vh auto; /* 5% from the top and centered */
+    padding: 20px;
+    border: 1px solid #a9a9b3;
+    width: 50vw; /* Could be more or less, depending on screen size */
+    position: relative;
+    overflow: auto;
+  }
+  
+  /* The Close Button */
+  .closeModal {
+    position: absolute;
+    top: 0;
+    right: 1%;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    /* TODO for desktop hover cursor pointer */
+  }
+
+  /* Modal Buttons */
+  .modalButton {
+      margin-top: 5px;
+      padding: 8px;
+      outline: 0;
+  }
+
+  .modalButton:active {
+      background-color: #292A2D;
+  }
+
+  /*__________________________------__________________*/

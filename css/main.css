@@ -1,0 +1,256 @@
+* { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); } /*Removes outline on tapping link for mobile */
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+    font-size: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/*______________________HEADER____________________*/
+
+#header {
+    background-color: #283747;
+    max-width: 100%;
+    height: 50px;
+    position: relative;
+}
+
+#logo{
+    position:absolute;
+    top:0px; 
+    left:0px;
+	margin-top: 0.5em;
+    width:194px;
+    height:40px;
+    overflow:hidden;
+}
+
+#header #logo:hover {
+    cursor: default;
+}
+
+
+#nav .menu-line {
+    background-color: white;
+    height: 2px;
+    margin-top: 4px;
+    border-radius: 25px;
+}
+
+#nav {
+	width: 25px;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 10px;
+    outline: 0;
+}
+
+#nav-bar-desktop {
+    display: none;
+}
+
+/*_________________________Styling__dropdown_____________________ */
+
+#dropdown-content {
+    /*display: none; */  
+    background-color: #273746;
+    position: absolute;
+    width: 100vw;
+    right: 0;
+    box-shadow: 0px 6px 8px 0px rgba(0,0,0,0.2);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    opacity: 0.8;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1;
+}
+
+.dropdownLink {
+    width: 100%;
+    color: white;
+    display: block;
+    font-size: 1em;
+    text-align: center;
+    border-bottom: 1px solid white;
+    text-decoration: none;
+    margin-top: 7px;
+    margin-right: 7px;
+    padding: 6px;
+    outline: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.dropdownLink:active {
+    background-color: #327da8;
+
+}
+
+
+
+
+/*______________________________----____________________*/
+
+
+
+
+
+
+
+/*______________________END OF HEADER____________________________*/
+
+
+
+/*______________________________________MAIN_PAGE__________________________*/
+
+#main {
+    max-width: 100%;
+    /*background-color: #85929E;*/
+    display: flex; /* So everything will be centered */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("img/main");
+	background-size: cover;
+    background-position: center;
+    height: calc(100vh - 50px);    /* Header bar is 50px so height of main is the rest to fill up the page */
+}
+
+#mainButton {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.1em;
+    border: 1px solid black;
+    padding: 6px;
+    margin-top: 10vh;
+    background-color: firebrick;
+    color: white;
+    border-radius: 50px;
+    outline: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+#mainButton:active {
+    filter: saturate(130%);
+}
+
+#info {
+    display: inline-block;
+    position:absolute;
+    font-size: 0.78em;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    margin-top: 35vh;
+    outline: 0;
+    font-weight: normal;
+    max-width: 40%;
+    background-color: indigo;
+    border: 1px solid black;
+	border-radius: 20px;
+    padding: 5px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    bottom: 20vh;
+}
+
+
+#info:active {
+    filter: saturate(130%);
+}
+
+/*INSERTING NAV BAR FOR DESKTOP VERSION AND SMALL DESIGN CHANGES FOR DESKTOP */
+@media only screen and (min-width: 769px){  /* Most tablets will have the mobile version */
+    #nav {
+        display: none; /*Hiding three line menu icon*/
+    }
+
+    #dropdown-content {
+        display: none; /* New html element is used for nav bar in desktop mode */
+    }
+
+    #nav-bar-desktop {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+    }
+
+    #nav-bar-desktop > a {
+        text-decoration: none;
+        text-align: right;
+        color: white;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        padding-right: 1vw;
+        padding-left: 1vw;
+        font-size: 0.9em;
+        border-right: 1px solid white;
+        outline: 0;
+    }
+
+    #nav-bar-desktop #last-desktop-link {
+        border-right: none
+    }
+
+    #nav-bar-desktop > a:active {
+        color: #327da8;
+    }
+
+    #nav-bar-desktop > a:hover {
+        color: #327da8;
+    }
+
+    #logo:hover {
+        cursor: default;
+    }
+
+    #mainButton:hover {
+        filter: saturate(120%);
+    }
+
+    #info:hover {
+        filter: saturate(120%);
+    }
+
+    #mainButton {
+        margin-top: 15vh;
+        padding: 10px;
+    }
+
+    #info {
+        bottom: 11vh;
+    }
+
+}   
+
+
+/*_____________________END_OF_MAIN_PAGE___________________________*/
+
+/*_______________TESTING SECOND PAGE LAYOUT_____________*/
+
+#deyteri {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkcyan;
+    height: 100vh;
+}
+
+#deyteri p {
+    text-align: center;
+    font-size: 2em;
+    color: white;
+}
+
+/*_______________________*/

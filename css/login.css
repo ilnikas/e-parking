@@ -1,0 +1,107 @@
+* { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); } /*Removes outline on tapping link for mobile */
+
+#logo{
+    position:absolute;
+    top:0px; 
+    left:0px;
+	margin-top: 0.5em;
+    width:194px;
+    height:40px;
+    overflow:hidden;
+}
+
+body {
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url("img/login.jpg"); /*Using gradient to darken image so login form will be clearly vissible */
+    /*background-color: #292A2D;*/
+    background-size: cover;
+    min-height: 630px; /* To avoid unpredictable effects when android keyboard pops over the screen */
+    height: 100vh;
+    max-width: 100%;
+    position: relative;
+}
+
+#homePageLogo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 50px;
+}
+
+#homePageLogo a {
+    font-size: 1.5em;
+    color: white;
+    text-decoration: none;
+    text-emphasis: bold;
+    outline: 0;
+    line-height: 50px;
+    margin-left: 6px;
+}
+
+#welcomeMessage {
+    color: white;
+    font-size: 2em;
+    position: absolute;
+    top: 20%;
+    text-align: center;
+}
+
+
+#mainPageLogin {
+    position: absolute;
+    bottom: 60%;
+    transform: translateY(60%);
+}
+
+input {
+    display: block;
+    margin: auto;
+}
+
+.inputField {
+    margin-bottom: 15%;
+    opacity: 0.5;
+}
+
+#allInputs {
+    margin-top: 40%;
+    padding: 35px 35px 0 35px;
+    border-top: 1px solid white;
+}
+
+
+
+#submitButton {
+    border: 1px solid white;
+    font-size: 1.2em;
+    margin-top: 60%;
+    padding: 4%;
+    border-radius: 10px;
+    outline: 0;
+    /*color: #6681BE;*/
+    color: darkorange;
+    text-emphasis: bold;
+    background: transparent;
+}
+
+#submitButton:hover {
+    cursor: pointer; /* For desktop version */
+}
+
+#submitButton:active {
+    background-color: grey;
+}
+
