@@ -26,22 +26,13 @@
 }
 
 #aboutText {
+
     text-align: left;
 	margin-left: 39%;
 	width: 60%;
-    font-size: 15px;
+    font-size: 80%;
     color: white;
 	margin-top: 0vh;
-	font-weight: normal;
-	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-#aboutText p {
-    text-align: left;
-	margin-left: 39%;
-	width: 60%;
-    font-size: 15px;
-    color: white;
 	font-weight: normal;
 	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
