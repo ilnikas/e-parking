@@ -14,7 +14,7 @@ closeButton.onclick = function() {
 function validate_simul()
 {
   var inputTime = document.getElementById('settime').value;
-  var inputTimeRGEX = /^([01]\d|2[0-3]):?([0-5]\d)$/;
+  var inputTimeRGEX = /^([01]\d|2[0-3])([:.])([0-5]\d)$/;
 
   var emptyRGEX = /^$/;
 
@@ -30,14 +30,28 @@ function validate_simul()
   	afterTimeResult = false;}
   }
 
-  if( inputTimeResult ? !afterTimeResult : afterTimeResult ) { // inputTimeResult XOR afterTimeResult, only one of the 2 fields must be filled
-  if( inputTimeResult == true && emptySet2 == true){
-  	//send exact time to backend and call php script
-	}
-  else if ( afterTimeResult == true && emptySet1 == true ) {
-	//send minutes of simulations to backend and call php script
-	}
-  }else {alert("please give correct simulation input: either exact time or minutes");}
+  if( emptySet1 == true && emptySet2 == true ) {
+		alert("parakalw dwste input");
+		return false;}
+
+  if( emptySet1 == true && afterTimeResult == false ){
+		alert("parakalw dwste swsta ta lepta sto pedio #2");
+		return false;}
+
+  if( emptySet1 == true && afterTimeResult == true ){
+		alert("OK");
+		return;}
+
+  if( inputTimeResult == false && emptySet2 == true ){
+		alert("parakalw dwste tin wra se swsti morfi sto pedio #1");
+		return false;}
+  else if( inputTimeResult == true && emptySet2 == true ){
+		alert("OK");
+		return;}
+  else{
+		alert("parakalw symplirwste mono 1 apo ta 2 pedia");
+		return false;}
+
 }
 
 //TODO Start simulation after validating data
