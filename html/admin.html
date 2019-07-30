@@ -57,13 +57,13 @@
                     <div id="simulationModal" class="modal">
                         <div class="modal-content">
                             <span class="closeModal">&times;</span>
-                            <p>Παρακαλώ εισάγεται ώρα για εκτέλεση εξομοίωσης</p>
+                            <p>Παρακαλώ εισάγετε ώρα για εκτέλεση εξομοίωσης</p>
                             <div id="manualTime">
-                                <form action="dummy_php">
+                                <form action="dummy_php" onsubmit="validate_simul()">
                                     Ώρα <br>
-                                    <input type="text"> <br><br>ή<br><br>
+                                    <input type="text" id="settime"> <br><br>ή<br><br>
                                     Μετά από <br>
-                                    <input type="text"> <br> λεπτά <br><br>
+                                    <input type="text" id="aftertime"> <br> λεπτά <br><br>
                                     <button type="submit" class="modalButton">Εκτέλεση</button>
                                 </form>
                             </div>
