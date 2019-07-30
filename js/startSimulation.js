@@ -11,6 +11,12 @@ closeButton.onclick = function() {
     modal2.style.display = "none";
 }
 
+var exactTime;
+var exactHours; //to be returned
+var exactMins; //to be returned
+var offsetTime; //to be returned
+
+
 function validate_simul()
 {
   var inputTime = document.getElementById('settime').value;
@@ -39,14 +45,16 @@ function validate_simul()
 		return false;}
 
   if( emptySet1 == true && afterTimeResult == true ){
-		alert("OK");
+		offsetTime = afterTime;
 		return;}
 
   if( inputTimeResult == false && emptySet2 == true ){
 		alert("parakalw dwste tin wra se swsti morfi sto pedio #1");
 		return false;}
   else if( inputTimeResult == true && emptySet2 == true ){
-		alert("OK");
+		exactTime = inputTime.split(/[:.]+/);
+		exactHours = exactTime[0];
+		exactMins = exactTime[1];
 		return;}
   else{
 		alert("parakalw symplirwste mono 1 apo ta 2 pedia");
