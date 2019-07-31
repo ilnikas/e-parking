@@ -15,7 +15,7 @@ tiles.addTo(mymap);
 //Adding marker
 var myMarker = {};
 //What will be displayed on the popup
-var popupContent = "<form action='kati.php'> <input placeholder='Ακτίνα (μέτρα)' style='height: 20px;' type='number' min='1' max='2500' name='radius' required> <br> <div style='margin-top: 12px; text-align: center;'><input style='height: 21px; font-size: 12px; border-radius: 5px; border: 1px solid coral; background-corol: lightgrey;' type='submit' value='Αποστολή'></div> </form>";  
+var popupContent = "<form action='kati.php'> <input placeholder='Ακτίνα (μέτρα)' style='height: 20px;' type='number' min='1' max='2500' name='radius' oninvalid='this.setCustomValidity(\"Η ακτίνα πρέπει να είναι μεταξύ του 1 και 2500\")' oninput='this.setCustomValidity(\"\")' required> <input placeholder='Ώρα που θέλετε να είστε εκεί' type='text' name='timeToArrive' pattern='^([01]\\d|2[0-3])([:.])([0-5]\\d)$' oninvalid='this.setCustomValidity(\"Η ώρα πρέπει να είναι στη μορφή 14.02 ή 14:02\")' oninput='this.setCustomValidity(\"\")' style='margin-top: 10px; height: 20px;'> <br> <div style='margin-top: 12px; text-align: center;'><input style='height: 21px; font-size: 12px; border-radius: 5px; border: 1px solid coral; background-corol: lightgrey;' type='submit' value='Αποστολή'></div> </form>";  
 
 mymap.on("click",function(e) {
     lat = e.latlng.lat;
@@ -29,6 +29,6 @@ mymap.on("click",function(e) {
     //adding the marker
     myMarker = L.marker([lat,lon]);
     myMarker.addTo(mymap);
-    myMarker.bindPopup(popupContent).openPopup(); //Adding popup to enter variable "radius" that will be sent to server
+    myMarker.bindPopup(popupContent).openPopup(); //Adding popup to enter variables "radius" and "timeToArrive"  that will be sent to server
 });
 
