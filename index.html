@@ -57,6 +57,17 @@
         <div id="mapPage">
             <div id="map">
             </div>
+            <div id="setTime">
+                <p id="timeChangeInfo">Θες να δεις τη διαθεσιμότητα για διαφορετική ώρα;</p>
+                <form action='kati.php'>
+                    <div id="insTimeField" >
+                        <input id="insTime" name='timeToCheckAvailability' placeholder='Ώρα' type='text' pattern='^([01]\d|2[0-3])([:.])([0-5]\d)$' required oninvalid='this.setCustomValidity("Η ώρα πρέπει να είναι στη μορφή 14.02 ή 14:02")' oninput='this.setCustomValidity("")'>
+                    </div>
+                    <div id='setTimeButtonPos'>
+                        <input id='setTimeButton' type='submit' value='Δες τη διαθεσιμότητα'>
+                    </div> 
+                </form>
+            </div>
         </div>
 
 	    <div id="faq">

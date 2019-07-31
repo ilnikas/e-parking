@@ -245,13 +245,54 @@ body {
     align-items: center;
     justify-content: center;
     background-color: darkcyan;
+    flex-direction: column;
     height: 100vh;
 }
 
 #map {
-    height: 90vh;
+    height: 75vh;
     width: 90vw;
 }
 
+#setTime {
+    margin-top: 30px;
+    max-width: 90vw;
+}
 
-/*_______________________*/
+#timeChangeInfo {
+    color: white;
+}
+
+#insTimeField {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#insTime {
+    font-size: 0.8em;
+    padding: 4px;
+    border: none;
+    text-align: center;
+    background-color: grey;
+    color: white;
+}
+
+#setTimeButtonPos {
+    margin-top: 19px;
+    text-align: center;
+}
+
+#setTimeButton {
+    border: 1px solid white;
+    background-color: dimgrey;
+    color: white;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+#setTimeButton:active {
+    background-color: #555555;
+}
+
+
+/*__________END_OF_MAP_PAGE_____________*/
