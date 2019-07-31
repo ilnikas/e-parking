@@ -250,7 +250,7 @@ body {
 }
 
 #map {
-    height: 75vh;
+    height: 60vh;
     width: 90vw;
 }
 
@@ -261,6 +261,7 @@ body {
 
 #timeChangeInfo {
     color: white;
+    font-size: 0.8em;
 }
 
 #insTimeField {
@@ -278,7 +279,7 @@ body {
 }
 
 #setTimeButtonPos {
-    margin-top: 19px;
+    margin-top: 15px;
     text-align: center;
 }
 
@@ -288,6 +289,7 @@ body {
     color: white;
     padding: 8px;
     border-radius: 10px;
+    margin-bottom: 0;
 }
 
 #setTimeButton:active {
