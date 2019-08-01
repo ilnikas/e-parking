@@ -1,0 +1,54 @@
+#contact {
+    max-width: 100%;
+    background-color: #004f50;
+	background: linear-gradient(
+    to right, 
+    #004f50 0%, 
+    #004f50 50%, 
+    #004f50 50%, 
+    #004f50 100%
+    );
+	background-size: 100%;
+	min-height: 99vh;
+	color: white;
+	padding-bottom: 1vh;
+}
+
+#contact h2 {
+    text-align: center;
+	background-color: #121212;
+	background-size: 100%;
+	max-width: 100%;
+    font-size: 3em;
+    color: white;
+	margin-top: 0vh;
+	font-weight: normal;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#contactImg{
+	margin-top: 0;
+	margin-left: auto;
+	margin-right: auto;
+    width:25%;
+    height:25%;
+	background-color: white;
+	background-size:100%;
+    border: 1px solid white;
+	border-radius: 20px;
+    padding: 5px;
+    overflow:hidden;
+}
+
+#contactText {
+    text-align: center;
+	margin-left: 15%;
+	width: 70%;
+    font-size: 1em;
+    color: white;
+	margin-top: 20vh;
+	border: none;
+	font-weight: normal;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+

@@ -4,6 +4,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/admin.css" type="text/css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+   crossorigin=""></script>
+
         <title>
             e-parking | Admin
         </title>
@@ -20,7 +27,7 @@
                 <h3 id="kmlLoadTitle">Φόρτωση kml αρχείου</h3>
                 <div id="uploadFile">
                     <div id="chooseFile">
-                        <input id="realButton" type="file" hidden="hidden">
+                        <input id="realButton" type="file" accept=".kml" hidden="hidden">
                         <button id="chooseFileButton">Επιλέξτε αρχείο</button>
                         <span id="infoChooseFile">Δεν έχει επιλεγεί αρχείο</span>
                     </div>
@@ -50,13 +57,13 @@
                     <div id="simulationModal" class="modal">
                         <div class="modal-content">
                             <span class="closeModal">&times;</span>
-                            <p>Παρακαλώ εισάγεται ώρα για εκτέλεση εξομοίωσης</p>
+                            <p>Παρακαλώ εισάγετε ώρα για εκτέλεση εξομοίωσης</p>
                             <div id="manualTime">
-                                <form action="dummy_php">
+                                <form action="dummy_php" onsubmit="return validate_simul()">
                                     Ώρα <br>
-                                    <input type="text"> <br><br>ή<br><br>
+                                    <input type="text" id="settime"> <br><br>ή<br><br>
                                     Μετά από <br>
-                                    <input type="text"> <br> λεπτά <br><br>
+                                    <input type="text" id="aftertime"> <br> λεπτά <br><br>
                                     <button type="submit" class="modalButton">Εκτέλεση</button>
                                 </form>
                             </div>
@@ -70,6 +77,6 @@
     <script src="../js/chooseKmlFile.js"></script>
     <script src="../js/confirmDataDelete.js"></script>
     <script src="../js/startSimulation.js"></script>
-    
+    <script src="../js/adminMap.js"></script>
 
 </html>
