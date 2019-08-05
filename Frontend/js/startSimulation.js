@@ -32,34 +32,50 @@ function validate_simul()
   var afterTimeResult = afterTimeRGEX.test(afterTime);
   var emptySet2 = emptyRGEX.test(afterTime);
   if(afterTimeResult == true){
-  	if (afterTime >= 1440){
+  	if ( afterTime <= 0 || afterTime >= 61 ){
   	afterTimeResult = false;}
   }
 
-  if( emptySet1 == true && emptySet2 == true ) {
-		alert("parakalw dwste input");
-		return false;}
+  var today = new Date();
 
-  if( emptySet1 == true && afterTimeResult == false ){
+
+  if( emptySet1 == true && emptySet2 == true ) {
+		exactHours = today.getHours();
+		exactMins = today.getMinutes();
+		offsetTime = 10;
+		return;}
+
+  if( (afterTimeResult == false && emptySet2 == false) && (emptySet1 == true || inputTimeResult ==true) ){
 		alert("parakalw dwste swsta ta lepta sto pedio #2");
 		return false;}
 
   if( emptySet1 == true && afterTimeResult == true ){
+		exactHours = today.getHours();
+		exactMins = today.getMinutes();
 		offsetTime = afterTime;
 		return;}
 
-  if( inputTimeResult == false && emptySet2 == true ){
+  if( inputTimeResult == false && (emptySet2 == true || afterTimeResult ==true) ){
 		alert("parakalw dwste tin wra se swsti morfi sto pedio #1");
 		return false;}
+
   else if( inputTimeResult == true && emptySet2 == true ){
 		exactTime = inputTime.split(/[:.]+/);
 		exactHours = exactTime[0];
 		exactMins = exactTime[1];
+		offsetTime = 10;
 		return;}
-  else{
-		alert("parakalw symplirwste mono 1 apo ta 2 pedia");
-		return false;}
 
+  else if( inputTimeResult == true && afterTimeResult == true ){
+		exactTime = inputTime.split(/[:.]+/);
+		exactHours = exactTime[0];
+		exactMins = exactTime[1];
+		offsetTime = afterTime;
+		return;}
+
+  else {
+		alert("parakalw dwste tin wra se swsti morfi sta pedia #1 & #2");
+		return false;}
 }
 
 //TODO Start simulation after validating data
