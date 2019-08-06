@@ -1,5 +1,34 @@
 <?php
-$xml = simplexml_load_file("data.kml");
+
+function insertToPolygons($connection,$coordinates,$population,$curve) {
+    $setCoordinates = "SET @_coordinates = ST_GeomFromText('" .$coordinates."')"; //MYSQL VARIABLE _coordinates contains coordinates as POLYGON data type
+    $setPopulation = "SET @_population = ".$population; //MYSQL VARIABLE _population contains population
+    $setCentroid = "SET @_centroid = ST_Centroid(@_coordinates)"; //MYSQL VARIABLE _centroid contains centroid as POINT data type
+    $setCurveId = "SET @_curveId = ".$curve; //MYSQL VARIABLE _curveId contais curve id for polygon
+
+    //executing the above querries
+    if ($connection->query($setCoordinates) === TRUE) { echo "Succesfull"; } else { echo "FAiled";}
+    if ($connection->query($setPopulation) === TRUE) { echo "Succesfull"; } else { echo "FAiled";}
+    if ($connection->query($setCentroid) === TRUE) { echo "Succesfull"; } else { echo "FAiled";}
+    if ($connection->query($setCurveId) === TRUE) { echo "Succesfull"; } else { echo "FAiled";}
+
+    // Inserting data
+    $insertQuerry = "INSERT INTO Polygons (population_block,centroid,coordinates,parking_spaces,curve_id) VALUES (@_population,@_centroid,@_coordinates,DEFAULT,@_curveId)";
+    if ($connection->query($insertQuerry) === TRUE) { echo "Insert Querry Succesfull"; } else { echo "Insert Querry FAiled";}
+
+}
+
+
+
+require("/var/phpIncludes/dbConnect.php"); //returns database connection as $conn --File put outside of /var/www for security reasons
+
+if ($conn->query("TRUNCATE TABLE Polygons;") === TRUE) {  //DELETES DATA ON TABLE Polygon at beggining
+    echo "Deleted everything";
+} else {  
+    echo "Couldn't delete";
+} 
+
+$xml = simplexml_load_file("data.kml"); //FILE data.kml MUST BE IN THE SAME DIRECTORY
 $data = $xml->Document->Folder->Placemark;
 $id = 1;
 foreach ($data as $record) {
@@ -13,12 +42,9 @@ foreach ($data as $record) {
     $population = $descHtml->getElementsByTagName('span')->item(5); //TODO Better get attribute with name population instead of assuming it's always the 5th span element
     if (!empty($population)) {
         $population = $population->textContent;
-        echo "Population for placemark is: ". $population;
     } else {
-        $population = 0;
-        echo "Population for placemark is: ". $population; 
+        $population = 0; //Assumes population is 0 - for example a mall has available parking spaces but 0 population
     }
-    echo "<br><br>";
 
 
     //Getting polygon's coordinates
@@ -27,11 +53,15 @@ foreach ($data as $record) {
     }  else {
             $coordinates = $record->MultiGeometry->Polygon->outerBoundaryIs->LinearRing->coordinates[0];
     }
-    print($coordinates);
-    $points = explode(" ", $coordinates); //Has stored points in form (LAT,LNG)
-    echo "_________________________________________________________________________This was id  ". $id;
-    echo "_________________________________________________________________________";
-    echo "<br><br>";
-    $id++;
+    $coordinates = str_replace(" ","_",$coordinates); //tood replace "_" with ","
+    $coordinates = str_replace(",","|",$coordinates); //todo replace "|" with " "
+    $coordinates = str_replace("_",",",$coordinates);
+    $coordinates = str_replace("|"," ",$coordinates);
+    $mySQLCoordinates = "POLYGON((" . $coordinates . "))"; 
+    
+
+
+    insertToPolygons($conn,$mySQLCoordinates,$population,rand(0,2));
 }
+mysqli_close($conn);
 ?>
