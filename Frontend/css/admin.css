@@ -91,19 +91,38 @@ button {
 #chooseFileButton {
     color: #d07200;
     border: 1px solid #d07200;
+    width: auto;
+    outline: 0;
     margin-top: 10px;
     padding: 5px;
+    background: transparent;
+    border-radius: 5px;
 }
 
 #uploadButton {
     margin-top: 15px;
     padding: 10px;
+    width: auto;
+    background: transparent;
+    color: darkorange;
+    border: 1px solid darkorange;
+    border-radius: 5px;
+    outline: 0;
+}
+
+#uploadButton:active {
+    background-color: white;
 }
 
 
 #infoChooseFile {
     margin-left: 5px;
     font-size: 1rem;
+}
+
+#infoUpload {
+    margin-top: 15px;
+    display: none;
 }
 
 #deleteData {

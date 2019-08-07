@@ -7,14 +7,14 @@ function insertToPolygons($connection,$coordinates,$population,$curve) {
     $setCurveId = "SET @_curveId = ".$curve; //MYSQL VARIABLE _curveId contais curve id for polygon
 
     //executing the above querries
-    if ($connection->query($setCoordinates) === TRUE) { echo "Succesfull"; } else { echo "FAiled";}
-    if ($connection->query($setPopulation) === TRUE) { echo "Succesfull"; } else { echo "FAiled";}
-    if ($connection->query($setCentroid) === TRUE) { echo "Succesfull"; } else { echo "FAiled";}
-    if ($connection->query($setCurveId) === TRUE) { echo "Succesfull"; } else { echo "FAiled";}
+if ($connection->query($setCoordinates) === TRUE) { /*echo "Succesfull";*/ } else { /*echo "FAiled";*/}
+if ($connection->query($setPopulation) === TRUE) { /*echo "Succesfull";*/ } else { /*echo "FAiled";*/}
+if ($connection->query($setCentroid) === TRUE) {/*echo "Succesfull";*/} else { /*echo "FAiled";*/}
+if ($connection->query($setCurveId) === TRUE) { /*echo "Succesfull";*/} else { /*echo "FAiled";*/}
 
     // Inserting data
     $insertQuerry = "INSERT INTO Polygons (population_block,centroid,coordinates,parking_spaces,curve_id) VALUES (@_population,@_centroid,@_coordinates,DEFAULT,@_curveId)";
-    if ($connection->query($insertQuerry) === TRUE) { echo "Insert Querry Succesfull"; } else { echo "Insert Querry FAiled";}
+if ($connection->query($insertQuerry) === TRUE) { /*echo "Insert Querry Succesfull";*/ } else { /*echo "Insert Querry FAiled";*/}
 
 }
 
@@ -28,7 +28,7 @@ if ($conn->query("TRUNCATE TABLE Polygons;") === TRUE) {  //DELETES DATA ON TABL
     echo "Couldn't delete";
 } 
 
-$xml = simplexml_load_file("/var/www/data.kml"); //FILE data.kml MUST BE IN THE SPECIFIED DIRECTORY
+$xml = simplexml_load_file("/var/www/uploads/data.kml"); //FILE data.kml MUST BE IN THE SPECIFIED DIRECTORY
 $data = $xml->Document->Folder->Placemark;
 $id = 1;
 foreach ($data as $record) {

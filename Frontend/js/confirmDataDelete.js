@@ -6,7 +6,8 @@ var deleteButton = document.getElementById("cancelDelete");
 
 
 btn.onclick = function() {
-    modal.style.display = "block"; 
+    modal.style.display = "block";
+    document.getElementById("infoUpload").style = "display: none;" //No need to display message for failed upload
   }
 
 closeButton.onclick = function() {
