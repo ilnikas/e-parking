@@ -248,6 +248,7 @@ body {
 }
 
 #map {
+	min-height: 430px;
     height: 75vh;
     max-width: 100vw;
 }

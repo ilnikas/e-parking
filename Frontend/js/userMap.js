@@ -10,6 +10,17 @@ const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">Op
 const tileUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 const tiles = L.tileLayer(tileUrl, { attribution }); //creating tiles for the map
 
+if(/Android [4-9]/.test(navigator.appVersion)) {
+   window.addEventListener("resize", function() {
+      if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
+         window.setTimeout(function() {
+            document.activeElement.scrollIntoViewIfNeeded();
+         },0);
+      }
+   })
+}
+
+
 tiles.addTo(mymap);
 
 //Adding marker
