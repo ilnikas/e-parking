@@ -11,11 +11,11 @@ var btn3 = document.getElementById("simulationButtonR");
 var closeButton = document.getElementsByClassName("closeModal")[1]; //button that closes poppup
 
 btn1.onclick = function() {
-    //some AJAX to send data time to server
+	//some AJAX to send data time to server
   }
 
 btn2.onclick = function() {
-    modal2.style.display = "block"; 
+	modal2.style.display = "block";
   }
 
 btn3.onclick = function() {
@@ -49,6 +49,9 @@ function validate_simul()
   var afterTimeRGEX = /^\d+$/;
   var afterTimeResult = afterTimeRGEX.test(afterTime);
   var emptySet2 = emptyRGEX.test(afterTime);
+
+  var leftButton = document.getElementById("simulationButtonL");
+  var rightButton = document.getElementById("simulationButtonR");
   if(afterTimeResult == true){
   	if ( afterTime <= 0 || afterTime >= 181 ){
   	afterTimeResult = false;}
@@ -71,6 +74,8 @@ function validate_simul()
 		exactMins = today.getMinutes();
 		offsetTime = afterTime;
 		setValues();
+		leftButton.style = "display: block;";
+		rightButton.style = "display: block;";
 		alert("egine " +offsetTime);
 		return false;
 		//some AJAX to send data time to server
@@ -94,6 +99,8 @@ function validate_simul()
 		exactHours = exactTime[0];
 		exactMins = exactTime[1];
 		offsetTime = afterTime;
+		leftButton.style = "display: block;";
+		rightButton.style = "display: block;";
 		return false;
 		//some AJAX to send data time to server
 		}

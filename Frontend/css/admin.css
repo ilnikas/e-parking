@@ -153,6 +153,7 @@ button {
 	margin-right: 10px;
 	margin-left: 10px;
     padding: 10px;
+    display: none;
 }
 
 #simulationButtonM {
@@ -167,6 +168,7 @@ button {
 	margin-right: 10px;
 	margin-left: 10px;
     padding: 10px;
+    display: none;
 }
 
 form > input {

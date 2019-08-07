@@ -20,7 +20,7 @@ function insertToPolygons($connection,$coordinates,$population,$curve) {
 
 
 
-require("/var/phpIncludes/dbConnect.php"); //returns database connection as $conn --File put outside of /var/www for security reasons
+require("/var/www/phpIncludes/dbConnect.php"); //returns database connection as $conn --File put outside of /var/www/html for security reasons
 
 if ($conn->query("TRUNCATE TABLE Polygons;") === TRUE) {  //DELETES DATA ON TABLE Polygon at beggining
     echo "Deleted everything";
@@ -28,7 +28,7 @@ if ($conn->query("TRUNCATE TABLE Polygons;") === TRUE) {  //DELETES DATA ON TABL
     echo "Couldn't delete";
 } 
 
-$xml = simplexml_load_file("data.kml"); //FILE data.kml MUST BE IN THE SAME DIRECTORY
+$xml = simplexml_load_file("/var/www/data.kml"); //FILE data.kml MUST BE IN THE SPECIFIED DIRECTORY
 $data = $xml->Document->Folder->Placemark;
 $id = 1;
 foreach ($data as $record) {
