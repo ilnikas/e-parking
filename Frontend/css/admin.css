@@ -138,11 +138,36 @@ button {
     margin-bottom: 10px;
 }
 
-#simulationButton {
-    margin-top: 20px;
+
+
+#simulationFunc {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     padding: 10px;
 }
 
+#simulationButtonL {
+    margin-top: 20px;
+	margin-right: 10px;
+	margin-left: 10px;
+    padding: 10px;
+}
+
+#simulationButtonM {
+    margin-top: 20px;
+	margin-right: 10px;
+	margin-left: 10px;
+    padding: 10px;
+}
+
+#simulationButtonR {
+    margin-top: 20px;
+	margin-right: 10px;
+	margin-left: 10px;
+    padding: 10px;
+}
 
 form > input {
     width: 80%;
@@ -198,8 +223,13 @@ form > input {
       outline: 0;
   }
 
+  .modalButtonContainer {
+		display: flex;
+		flex: 3;
+}
   .modalButton:active {
       background-color: #292A2D;
   }
+
 
   /*__________________________------__________________*/

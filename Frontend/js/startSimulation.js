@@ -1,21 +1,39 @@
+var exactTime;
+var exactHours; //to be returned
+var exactMins; //to be returned
+var offsetTime; //to be returned
+var today = new Date();
+
 var modal2 = document.getElementById("simulationModal");
-var btn = document.getElementById("simulationButton");
+var btn1 = document.getElementById("simulationButtonL");
+var btn2 = document.getElementById("simulationButtonM");
+var btn3 = document.getElementById("simulationButtonR");
 var closeButton = document.getElementsByClassName("closeModal")[1]; //button that closes poppup
 
+btn1.onclick = function() {
+    //some AJAX to send data time to server
+  }
 
-btn.onclick = function() {
+btn2.onclick = function() {
     modal2.style.display = "block"; 
+  }
+
+btn3.onclick = function() {
+    //some AJAX to send data time to server
   }
 
 closeButton.onclick = function() {
     modal2.style.display = "none";
 }
 
-var exactTime;
-var exactHours; //to be returned
-var exactMins; //to be returned
-var offsetTime; //to be returned
+exactHours = today.getHours();
+exactMins = today.getMinutes();
+offsetTime = 10;
 
+function setValues(){
+document.getElementById("simulationButtonL").innerHTML = "Εξομοίωση για " +offsetTime +" λεπτά πριν";
+document.getElementById("simulationButtonR").innerHTML = "Εξομοίωση για " +offsetTime +" λεπτά μετά";
+}
 
 function validate_simul()
 {
@@ -32,18 +50,17 @@ function validate_simul()
   var afterTimeResult = afterTimeRGEX.test(afterTime);
   var emptySet2 = emptyRGEX.test(afterTime);
   if(afterTimeResult == true){
-  	if ( afterTime <= 0 || afterTime >= 61 ){
+  	if ( afterTime <= 0 || afterTime >= 181 ){
   	afterTimeResult = false;}
   }
-
-  var today = new Date();
-
 
   if( emptySet1 == true && emptySet2 == true ) {
 		exactHours = today.getHours();
 		exactMins = today.getMinutes();
 		offsetTime = 10;
-		return;}
+		return false;
+		//some AJAX to send data time to server
+		}
 
   if( (afterTimeResult == false && emptySet2 == false) && (emptySet1 == true || inputTimeResult ==true) ){
 		alert("parakalw dwste swsta ta lepta sto pedio #2");
@@ -53,7 +70,11 @@ function validate_simul()
 		exactHours = today.getHours();
 		exactMins = today.getMinutes();
 		offsetTime = afterTime;
-		return;}
+		setValues();
+		alert("egine " +offsetTime);
+		return false;
+		//some AJAX to send data time to server
+		}
 
   if( inputTimeResult == false && (emptySet2 == true || afterTimeResult ==true) ){
 		alert("parakalw dwste tin wra se swsti morfi sto pedio #1");
@@ -64,18 +85,23 @@ function validate_simul()
 		exactHours = exactTime[0];
 		exactMins = exactTime[1];
 		offsetTime = 10;
-		return;}
+		return false;
+		//some AJAX to send data time to server
+		}
 
   else if( inputTimeResult == true && afterTimeResult == true ){
 		exactTime = inputTime.split(/[:.]+/);
 		exactHours = exactTime[0];
 		exactMins = exactTime[1];
 		offsetTime = afterTime;
-		return;}
+		return false;
+		//some AJAX to send data time to server
+		}
 
   else {
 		alert("parakalw dwste tin wra se swsti morfi sta pedia #1 & #2");
 		return false;}
 }
+
 
 //TODO Start simulation after validating data

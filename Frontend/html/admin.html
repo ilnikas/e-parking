@@ -17,7 +17,7 @@
 
     </head>
 
-    <body>
+    <body onload="setValues()">
         <div id="wrapper">
             <div id="header">
                 <img id="logo" src="../css/img/logo.png">
@@ -53,13 +53,18 @@
                     <div id="map">
                         map
                     </div>
-                    <button id="simulationButton">Εκτέλεση εξομοίωσης</button>
+					<div id="simulationFunc">
+					<button id="simulationButtonL"></button>
+                    <button id="simulationButtonM">Εκτέλεση εξομοίωσης</button>
+					<button id="simulationButtonR"></button>
+					</div>
                     <div id="simulationModal" class="modal">
                         <div class="modal-content">
                             <span class="closeModal">&times;</span>
                             <p>Παρακαλώ εισάγετε τις παραμέτρους για εκτέλεση εξομοίωσης<br><br></p>
                             <div id="manualTime">
-                                <form action="dummy_php" onsubmit="return validate_simul()">
+								<iframe name="votar" style="display:none;"></iframe>
+                                <form onsubmit="return validate_simul()"> <!-- action="dummy_php": should be done with AJAX instead -->
                                     (αν το πεδίο παραμείνει κενό, λαμβάνεται υπόψη ως ώρα έναρξης της εξομοίωσης η τρέχουσα ώρα) <br>
                                     <input type="text" id="settime"> <br>Ώρα<br><br>
                                     (αν το πεδίο παραμείνει κενό, βήμα/offset της εξομοίωσης θα είναι τα 10 λεπτά) <br>
@@ -73,7 +78,8 @@
             </div>
         </div>
     </body>
-
+	
+	<script src="../js/globalVars.js"></script>
     <script src="../js/chooseKmlFile.js"></script>
     <script src="../js/confirmDataDelete.js"></script>
     <script src="../js/startSimulation.js"></script>
