@@ -1,24 +1,27 @@
 #about {
     max-width: 100%;
-    background-color: black;
-	background: linear-gradient(
-    to right, 
-    #1f1b24 0%, 
-    #1f1b24 37%, 
-    #292929 37%, 
-    #292929 100%
-    );
-	background-size: 100%;
 	min-height: 99vh;
 	color: white;
 	padding-bottom: 1vh;
 }
 
+.carbon { 
+    width: 100%;
+	background:
+	linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+	linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+	linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+	linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+	linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+	linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+	background-color: #131313;
+	background-size: 20px 20px;
+}
+
 #about h2 {
     text-align: center;
 	max-width: 100%;
-	margin-left: 0.2em;
-    font-size: 3em;
+    font-size: 2em;
     color: white;
 	margin-top: 0vh;
 	background-color: #1f1b24;
@@ -27,23 +30,35 @@
 	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-#aboutImg{
-	margin-top: 0;
-	margin-left: 58%;
-    width:25%;
-    height:25%;
+#about h3 {
+    text-align: center;
+	text-decoration: underline;
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+    font-size: 1.2em;
+    color: white;
+	margin-top: 0vh;
+	font-weight: normal;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#aboutIco{
+	display: inline-block;
+	width: 100%;
+	text-align: center;
     overflow:hidden;
 }
 
 #aboutText {
 
-    text-align: left;
-	margin-left: 39%;
-	width: 60%;
-    font-size: 1em;
+    text-align: justify;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+    font-size: 0.85em;
     color: white;
 	margin-top: 0vh;
 	font-weight: normal;
-	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	font-family: Calibri;
 }
 

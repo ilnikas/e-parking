@@ -30,7 +30,7 @@
                     <form>
                         <div id="chooseFile">
                             <input id="realButton" type="file" name="myKmlFile" accept=".kml" hidden="hidden">
-                            <input type="button" id="chooseFileButton" value="Επιλέξτε αρχείο">
+                            <input type="button" class="otherbutton" id="chooseFileButton" value="Επιλέξτε αρχείο">
                             <span id="infoChooseFile">Δεν έχει επιλεγεί αρχείο</span>
                         </div>
                         <input id="uploadButton" type="button" value="Upload" onClick="fileUpload(this.form,'uploadKml.php','infoUpload'); return false;">
@@ -71,7 +71,6 @@
                                 <form onsubmit="return validate_simul()"> <!-- action="dummy_php": should be done with AJAX instead -->
                                     (αν το πεδίο παραμείνει κενό, λαμβάνεται υπόψη ως ώρα έναρξης της εξομοίωσης η τρέχουσα ώρα) <br>
                                     <input type="text" id="settime"> <br>Ώρα<br><br>
-                                    (αν το πεδίο παραμείνει κενό, βήμα/offset της εξομοίωσης θα είναι τα 10 λεπτά) <br>
                                     <input type="text" id="aftertime"> <br> Βήμα εξομοίωσης σε λεπτά <br><br>
                                     <button type="submit" class="modalButton">Εκτέλεση</button>
                                 </form>
