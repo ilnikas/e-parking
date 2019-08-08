@@ -11,6 +11,7 @@ if(!isset($_SESSION['username'])){
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="../css/img/fav.ico" />
         <link rel="stylesheet" href="../css/admin.css" type="text/css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -37,7 +38,7 @@ if(!isset($_SESSION['username'])){
                     <form>
                         <div id="chooseFile">
                             <input id="realButton" type="file" name="myKmlFile" accept=".kml" hidden="hidden">
-                            <input type="button" id="chooseFileButton" value="Επιλέξτε αρχείο">
+                            <input type="button" class="otherbutton" id="chooseFileButton" value="Επιλέξτε αρχείο">
                             <span id="infoChooseFile">Δεν έχει επιλεγεί αρχείο</span>
                         </div>
                         <input id="uploadButton" type="button" value="Upload" onClick="fileUpload(this.form,'uploadKml.php','infoUpload'); return false;">
@@ -78,7 +79,6 @@ if(!isset($_SESSION['username'])){
                                 <form onsubmit="return validate_simul()"> <!-- action="dummy_php": should be done with AJAX instead -->
                                     (αν το πεδίο παραμείνει κενό, λαμβάνεται υπόψη ως ώρα έναρξης της εξομοίωσης η τρέχουσα ώρα) <br>
                                     <input type="text" id="settime"> <br>Ώρα<br><br>
-                                    (αν το πεδίο παραμείνει κενό, βήμα/offset της εξομοίωσης θα είναι τα 10 λεπτά) <br>
                                     <input type="text" id="aftertime"> <br> Βήμα εξομοίωσης σε λεπτά <br><br>
                                     <button type="submit" class="modalButton">Εκτέλεση</button>
                                 </form>

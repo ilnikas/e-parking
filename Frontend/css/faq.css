@@ -1,9 +1,6 @@
 #faq {
     max-width: 100%;
-    background-color: #184CB3;
-	background-image: linear-gradient(to right, #184CB3, #5F106C);
-	background-size: 100%;
-	min-height: 120vh;
+	min-height: 100vh;
 	color: white;
 }
 
@@ -16,8 +13,23 @@
 	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+button::-moz-focus-inner {
+  border: 0;
+}
+
+.carbon-fibre { 
+    width: 100%;
+    background:
+    radial-gradient(black 15%, transparent 16%) 0 0,
+    radial-gradient(black 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+    background-color:#282828;
+    background-size:16px 16px;
+}
+
 .accordion {
-  background-color: #3287A8;
+  background-color: #000000;
   margin-top: 2vh;
   color: white;
   font-weight: bold;
@@ -33,8 +45,14 @@
   border: none;
 }
 
-.active, .accordion:hover {
-  background-color: #6900D8;
+.accordion:hover {
+  background-color: #c0c0c0;
+  color: black;
+}
+
+.active{
+  background-color: white;
+  color: black;
 }
 
 .accordion:after {
@@ -43,8 +61,6 @@
   float: right;
 }
 
-
-
 .panel {
   max-width: 100%;
   margin-bottom: 2vh;
@@ -52,5 +68,13 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+  text-align: justify;
 }
 
+@media (pointer: none), (pointer:coarse) {
+
+  .active, .accordion:hover {
+  background-color: white;
+	}
+
+}
