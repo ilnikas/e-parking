@@ -34,10 +34,9 @@ button::-moz-focus-inner {
 
 .accordion {
   background-color: grey;
-  margin-bottom: 6vh;  /*ACCORDING TO HOW MANY LINES EXIST*/
+  margin-bottom: 6vh;  /*ACCORDING TO HOW MANY QUESTIONS EXIST AT FINAL VERSION TODO change it if necessary at the end*/
   color: white;
   font-weight: normal;
-  /*cursor: pointer; mobile first so no need  TODO include on querry for desktop */
   padding: 10px;
   width: 100%;
   border: none;

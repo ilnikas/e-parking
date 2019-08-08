@@ -232,6 +232,10 @@ body {
         bottom: 11vh;
     }
 
+    .accordion:hover {
+        cursor: pointer; /* FOR FAQ */
+    }
+
 }   
 
 
