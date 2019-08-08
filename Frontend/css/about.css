@@ -17,15 +17,16 @@
     font-size: 2em;
 	color: white;
 	margin-bottom: 10%;
+	font-weight: normal;
 }
 
 
 #aboutText {
-    font-size: 1em;
+    font-size: 1.1em;
     color: white;
 	font-weight: normal;
 	font-family: Calibri;
-	max-width: 50vw;
+	max-width: 65vw;
 	margin-bottom: 10%;
 	text-align: center;
 }

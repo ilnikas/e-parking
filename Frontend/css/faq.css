@@ -8,9 +8,9 @@
     text-align: center;
     font-size: 2em;
     color: white;
-	margin-top: 0vh;
-	font-weight: normal;
-	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	  margin-top: 10px;
+	  font-weight: normal;
+	  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 button::-moz-focus-inner {
@@ -28,13 +28,12 @@ button::-moz-focus-inner {
 }
 
 #faq > h2 {
-  margin-bottom: 7vh;
-  padding-bottom: 5vh;
+  margin-bottom: 11%;
 }
 
 .accordion {
   background-color: grey;
-  margin-bottom: 6vh;  /*ACCORDING TO HOW MANY QUESTIONS EXIST AT FINAL VERSION TODO change it if necessary at the end*/
+  margin-bottom: 5vh;  /*ACCORDING TO HOW MANY QUESTIONS EXIST AT FINAL VERSION TODO change it if necessary at the end*/
   color: white;
   font-weight: normal;
   padding: 10px;

@@ -17,12 +17,12 @@
 	justify-content: center;
 }
 
-#contact h2 {
+/*#contact h2 {
     font-size: 2em;
 	font-weight: bold;
 	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-	margin-bottom: 10vh;
-}
+	margin-bottom: 10%;
+}*/
 
 
 /*#contactText {
@@ -45,7 +45,7 @@ i {
 
 .iconContainer {
 	text-align: center;
-	margin-bottom: 10vh;
+	margin-bottom: 40%;
 }
 
 #contact a {
