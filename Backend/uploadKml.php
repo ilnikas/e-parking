@@ -21,7 +21,7 @@ if ($_FILES['myKmlFile']['error'] > 0) {
             echo 'Μερική μεταφόρτωση αρχείου';
             break;
         case 4:
-            echo 'Δεν μεταφορτώθηκε αρχείο';
+            echo 'Δεν επιλέχθηκε αρχείο';
             break;
         case 6:
             echo 'Δεν έχει οριστεί temp directory';

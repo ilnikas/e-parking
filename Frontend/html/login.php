@@ -1,3 +1,17 @@
+<?php
+    session_start();
+    require_once("/var/www/phpIncludes/credentials.php");
+    
+    if(!isset($_POST['username']) || (!isset($_POST['password']))) {
+        //echo "Παρακαλώ εισάγετε τα στοιχεία σας!";
+    } else if (password_verify($_POST['username'],$username) && password_verify($_POST['password'],$password)) {
+        $_SESSION["username"] = $username; //session so no one else can access the admin page
+        header("Location:admin.php"); //redirecting to admin page
+    } else {
+        //echo "Λανθασμένα στοιχεία username/password <br>Παρακαλώ προσπαθήστε ξανά";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="el">
     <head>
@@ -23,7 +37,7 @@
             
             <div id="mainPageLogin">
 
-                <form action="dummy.php">
+                <form method="post" action="login.php">
                     <div id="allInputs">
                         <input class="inputField" type="text" name="username" placeholder="Username">
                         <input class="inputField" id="lastInput" type="password" name="password" placeholder="Password">

@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION['username'])){
+   header("Location:login.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="el">
     <head>
@@ -21,7 +29,7 @@
         <div id="wrapper">
             <div id="header">
                 <img id="logo" src="../css/img/logo.png">
-                <a href="login.html" target="_self">Αποσύνδεση</a>
+                <a href="../php/logout.php" target="_self">Αποσύνδεση</a>
             </div>
             <div class="mainPart">
                 <h3 id="kmlLoadTitle">Φόρτωση kml αρχείου</h3>
