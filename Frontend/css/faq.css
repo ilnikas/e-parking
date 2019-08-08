@@ -17,24 +17,28 @@ button::-moz-focus-inner {
   border: 0;
 }
 
-.carbon-fibre { 
-    width: 100%;
-    background:
-    radial-gradient(black 15%, transparent 16%) 0 0,
-    radial-gradient(black 15%, transparent 16%) 8px 8px,
-    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-    background-color:#282828;
-    background-size:16px 16px;
+#faq { 
+    max-width: 100%;
+    min-height: 100vh;
+    background-color: #6A0888;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#faq > h2 {
+  margin-bottom: 7vh;
+  padding-bottom: 5vh;
 }
 
 .accordion {
-  background-color: #000000;
-  margin-top: 2vh;
+  background-color: grey;
+  margin-bottom: 6vh;  /*ACCORDING TO HOW MANY LINES EXIST*/
   color: white;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 18px;
+  font-weight: normal;
+  /*cursor: pointer; mobile first so no need  TODO include on querry for desktop */
+  padding: 10px;
   width: 100%;
   border: none;
   text-align: center;
