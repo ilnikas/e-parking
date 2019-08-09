@@ -1,28 +1,17 @@
 <?php
-    session_start();
-    require_once("/var/www/phpIncludes/credentials.php");
+session_start();
+require_once("/var/www/phpIncludes/credentials.php");
 
-    $cred = NULL;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $wrong = NULL;
 
-
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-      $myusername = $_POST['username'];
-      $mypassword = $_POST['password'];
-
-      if (password_verify($_POST['username'],$username) && password_verify($_POST['password'],$password)) {
+    if (password_verify($_POST['username'],$username) && password_verify($_POST['password'],$password)) {
         $_SESSION["username"] = $username; //session so no one else can access the admin page
         header("Location:admin.php"); //redirecting to admin page
-    } else if (($myusername == "") || ($mypassword == "")){
-        $cred = "Παρακαλώ εισάγετε τα στοιχεία σας!";
-        $wrong = NULL;
     } else {
         $wrong = "Λανθασμένα στοιχεία username/password.<br>Παρακαλώ προσπαθήστε ξανά";
-        $cred = NULL;
-        }
     }
+}
 ?>
 
 <!DOCTYPE html>
@@ -54,12 +43,13 @@
                     <div id="allInputs">
                         <input class="inputField" type="text" name="username" placeholder="Username">
                         <input class="inputField" id="lastInput" type="password" name="password" placeholder="Password">
-                        <p>
                         <?php
-                          echo isset($cred) ? $cred : "";
-                          echo isset($wrong) ? $wrong : "";
+                          if(isset($wrong)) {
+                            echo "<p style=text-align: center;";
+                            echo $wrong;
+                            echo "</p>";
+                          }
                         ?>
-                        </p>
                     </div>
                     <input id="submitButton" name="btnSubmit" type="Submit" value="Σύνδεση">
                 </form>
