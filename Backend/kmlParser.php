@@ -23,9 +23,9 @@ if ($connection->query($insertQuerry) === TRUE) { /*echo "Insert Querry Succesfu
 require("/var/www/phpIncludes/dbConnect.php"); //returns database connection as $conn --File put outside of /var/www/html for security reasons
 
 if ($conn->query("TRUNCATE TABLE Polygons;") === TRUE) {  //DELETES DATA ON TABLE Polygon at beggining
-    echo "Deleted everything";
+    //echo "Deleted everything";
 } else {  
-    echo "Couldn't delete";
+    //echo "Couldn't delete";
 } 
 
 $xml = simplexml_load_file("/var/www/uploads/data.kml"); //FILE data.kml MUST BE IN THE SPECIFIED DIRECTORY

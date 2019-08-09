@@ -19,6 +19,7 @@ if(!isset($_SESSION['username'])){
    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
    crossorigin=""></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <!-- Mostyly for AJAX -->
 
         <title>
             e-parking | Admin
@@ -41,7 +42,7 @@ if(!isset($_SESSION['username'])){
                             <input type="button" class="otherbutton" id="chooseFileButton" value="Επιλέξτε αρχείο">
                             <span id="infoChooseFile">Δεν έχει επιλεγεί αρχείο</span>
                         </div>
-                        <input id="uploadButton" type="button" value="Upload" onClick="fileUpload(this.form,'uploadKml.php','infoUpload'); return false;">
+                        <input id="uploadButton" type="button" value="Upload" onClick="fileUpload(this.form,'../php/uploadKml.php','infoUpload'); return false;">
                         <div id="infoUpload"></div>
                     </form>
                 </div>
@@ -95,5 +96,6 @@ if(!isset($_SESSION['username'])){
     <script src="../js/startSimulation.js"></script>
     <script src="../js/adminMap.js"></script>
     <script src="../js/uploadKmlFile.js"></script>
+    <script src="../js/getPolygons.js"></script>
 
 </html>

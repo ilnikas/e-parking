@@ -65,11 +65,12 @@ if (is_uploaded_file($_FILES['myKmlFile']['tmp_name'])) {
     exit;
 }
 
-echo 'Η μεταφόρτωση ολοκληρώθηκε επιτυχώς!';
+
 
 //__________________________________PARSING KML AND INSERTING TO DATABASE____________________________
 include_once('kmlParser.php');
 
+echo 'Η μεταφόρτωση ολοκληρώθηκε επιτυχώς!'; //This will only be displayed at the end of overall process (including db inserts) because of iframe
 
 ?>
 

@@ -20,7 +20,7 @@ function fileUpload(form, actionUrl, infoDivId) {
     var myIframe = document.getElementById("uploadIframe");
     var msgIframe;
 
-    // Add event...
+    // When process finishes
     var eventHandler = function () {
 
         if (myIframe.detachEvent){
@@ -28,7 +28,7 @@ function fileUpload(form, actionUrl, infoDivId) {
         } else { 
             myIframe.removeEventListener("load", eventHandler, false); //removing listener
         }
-        // Getting message from server (checking all possible locations in the dom)
+        // Getting message from server (checking all possible locations in the dom) to be displayed
         if (myIframe.contentDocument) {
             msgIframe = myIframe.contentDocument.body.innerHTML;
         } else if (myIframe.contentWindow) {
@@ -37,13 +37,16 @@ function fileUpload(form, actionUrl, infoDivId) {
             msgIframe = myIframe.document.body.innerHTML;
         }
 
-        document.getElementById(infoDivId).innerHTML = msgIframe;
+        document.getElementById(infoDivId).innerHTML = msgIframe; //displaying message
 
         // Deleting frame
         setTimeout('myIframe.parentNode.removeChild(myIframe)', 250); //TODO CHECK WHAT HAPPENDS IF YOU REMOVE SET TIMEOUT AND DELETE INSTANTLY
+
+        fetchCoordinates(); //AFTER FILE GETS UPLOADED AND PARSED INTO DATABASE FETCH COORDINATES TO CLIENT
+        
     }
 
-    //When iframe is loaded (so file is uploaded) get message from server and delete event and listener
+    //When iframe is loaded (so file is uploaded and parsed) get message from server and delete event and listener
     if (myIframe.addEventListener) {
         myIframe.addEventListener("load", eventHandler, true);
     }
