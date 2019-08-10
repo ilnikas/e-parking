@@ -17,9 +17,17 @@ function fetchCoordinates() {
                  "opacity": 0.5
             };
 
-                L.geoJSON(polygonCoordinates, {
-                   style: myStyle
-                }).addTo(mymap);
+
+
+            var id = 1;
+
+            for(let polygon of  polygonCoordinates["features"]) { //ID IS AUTO INCREMENT IN DATABASE SO THIS FOR LOOP LETS THE CLIENT KNOWS WHAT IS THE ID FOR EACH POLYGON
+                polygon["id"] = id;
+                id++;
+            }
+            L.geoJSON(polygonCoordinates, {
+               style: myStyle
+            }).addTo(mymap);
         }
     });
 }
