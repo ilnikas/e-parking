@@ -93,9 +93,10 @@ if(!isset($_SESSION['username'])){
 	
     <script src="../js/chooseKmlFile.js"></script>
     <script src="../js/confirmDataDelete.js"></script>
-    <script src="../js/startSimulation.js"></script>
     <script src="../js/adminMap.js"></script>
     <script src="../js/uploadKmlFile.js"></script>
     <script src="../js/getPolygons.js"></script>
+    <script src="../js/startSimulation.js"></script>
+    <script src="../js/dataDelete.js"></script>
 
 </html>
