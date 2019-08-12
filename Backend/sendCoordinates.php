@@ -2,7 +2,7 @@
 
 require("/var/www/phpIncludes/dbConnect.php"); //returns database connection as $conn --File put outside of /var/www/html for security reasons
 
-$result = $conn->query("SELECT polygon_id, ST_AsGeoJSON(coordinates), curve_id, population_block, parking_spaces from Polygons;");
+$result = $conn->query("SELECT polygon_id, ST_AsGeoJSON(coordinates), curve_id, population_block, parking_spaces from Polygons ORDER BY polygon_id;");
 $currentRow = 0; //IF ADDED BY 1 IT'S ALSO POLYGON ID
 
 $numberRows = mysqli_num_rows($result);

@@ -1,7 +1,9 @@
 var exactTime;
-var exactHours; //to be returned
-var exactMins; //to be returned
-var offsetTime; //to be returned
+var exactHours;
+var exactMins;
+var absoluteTime;
+var currSimulationTime = ""; //to be returned
+var offsetTime;
 var today = new Date();
 
 var modal2 = document.getElementById("simulationModal");
@@ -10,8 +12,14 @@ var btn2 = document.getElementById("simulationButtonM");
 var btn3 = document.getElementById("simulationButtonR");
 var closeButton = document.getElementsByClassName("closeModal")[1]; //button that closes poppup
 
+
 btn1.onclick = function() {
-	//some AJAX to send data time to server
+	absoluteTime = Number(absoluteTime) - Number(offsetTime);
+	if(absoluteTime < 0){ absoluteTime = absoluteTime + Number(1440);}
+	currSimulationTime = absToCurr(absoluteTime);
+	alert("curr simul time is: " +currSimulationTime);
+	currSimulationTime = "" +currSimulationTime;
+	simulate(currSimulationTime);
   }
 
 btn2.onclick = function() {
@@ -19,7 +27,12 @@ btn2.onclick = function() {
   }
 
 btn3.onclick = function() {
-    //some AJAX to send data time to server
+    absoluteTime = Number(absoluteTime) + Number(offsetTime);
+	if(absoluteTime > 1439){ absoluteTime = absoluteTime - Number(1440);}
+	currSimulationTime = absToCurr(absoluteTime);
+	alert("curr simul time is: " +currSimulationTime);
+    currSimulationTime = "" +currSimulationTime;
+	simulate(currSimulationTime);
   }
 
 closeButton.onclick = function() {
@@ -28,7 +41,18 @@ closeButton.onclick = function() {
 
 exactHours = today.getHours();
 exactMins = today.getMinutes();
-offsetTime = 10;
+
+function absToCurr(absTime){
+	var currSimTime;
+	var exHours = ~~(absTime / 60);
+	var exMins = absTime % 60;
+		if( (exHours < 10) && (exMins < 10) ){
+		currSimTime = "0" + exHours + "0" + exMins;}
+		else if( exHours < 10 ) {currSimTime = "0" + exHours + exMins;}
+		else if( exMins < 10 ) {currSimTime = "" + exHours + "0" + exMins;}
+		else {currSimTime = "" + exHours + exMins;}
+	return currSimTime;
+}
 
 function setValues(){
 document.getElementById("simulationButtonL").innerHTML = "Εξομοίωση για " +offsetTime +" λεπτά πριν";
@@ -60,9 +84,17 @@ function validate_simul()
   if( emptySet1 == true && emptySet2 == true ) {
 		exactHours = today.getHours();
 		exactMins = today.getMinutes();
-		offsetTime = 10;
-		return false;
-		//some AJAX to send data time to server
+		offsetTime = 15;
+		setValues();
+		leftButton.style = "display: block;";
+		rightButton.style = "display: block;";
+		absoluteTime = exactHours * 60 + Number(exactMins);
+		currSimulationTime = absToCurr(absoluteTime);
+		alert("curr simul time is: " +currSimulationTime);
+		modal2.style.display = "none";
+        currSimulationTime = "" +currSimulationTime;
+		simulate(currSimulationTime);
+        return false;
 		}
 
   if( (afterTimeResult == false && emptySet2 == false) && (emptySet1 == true || inputTimeResult ==true) ){
@@ -70,15 +102,24 @@ function validate_simul()
 		return false;}
 
   if( emptySet1 == true && afterTimeResult == true ){
+		var mylog = 1;
 		exactHours = today.getHours();
 		exactMins = today.getMinutes();
 		offsetTime = afterTime;
 		setValues();
 		leftButton.style = "display: block;";
 		rightButton.style = "display: block;";
-		alert("egine " +offsetTime);
+		absoluteTime = exactHours * 60 + Number(exactMins);
+		currSimulationTime = absToCurr(absoluteTime);
+		alert("curr simul time is: " +currSimulationTime);
+		currSimulationTime = 2 * currSimulationTime;
+		currSimulationTime = "" +currSimulationTime;
+		if(typeof currSimulationTime === 'string'){mylog = 2}
+		alert("my log is: " +mylog);
+		modal2.style.display = "none";
+	    currSimulationTime = "" +currSimulationTime;
+		simulate(currSimulationTime);
 		return false;
-		//some AJAX to send data time to server
 		}
 
   if( inputTimeResult == false && (emptySet2 == true || afterTimeResult ==true) ){
@@ -89,9 +130,17 @@ function validate_simul()
 		exactTime = inputTime.split(/[:.]+/);
 		exactHours = exactTime[0];
 		exactMins = exactTime[1];
-		offsetTime = 10;
-		return false;
-		//some AJAX to send data time to server
+		offsetTime = 15;
+		setValues();
+		leftButton.style = "display: block;";
+		rightButton.style = "display: block;";
+		absoluteTime = exactHours * 60 + Number(exactMins);
+		currSimulationTime = absToCurr(absoluteTime);
+		alert("curr simul time is: " +currSimulationTime);
+		modal2.style.display = "none";
+	    currSimulationTime = "" +currSimulationTime;
+		simulate(currSimulationTime);
+        return false;
 		}
 
   else if( inputTimeResult == true && afterTimeResult == true ){
@@ -99,10 +148,16 @@ function validate_simul()
 		exactHours = exactTime[0];
 		exactMins = exactTime[1];
 		offsetTime = afterTime;
+		setValues();
 		leftButton.style = "display: block;";
 		rightButton.style = "display: block;";
+		absoluteTime = exactHours * 60 + Number(exactMins);
+		currSimulationTime = absToCurr(absoluteTime);
+		alert("curr simul time is: " +currSimulationTime);
+		modal2.style.display = "none";
+	    currSimulationTime = "" +currSimulationTime;
+		simulate(currSimulationTime);
 		return false;
-		//some AJAX to send data time to server
 		}
 
   else {
@@ -110,5 +165,30 @@ function validate_simul()
 		return false;}
 }
 
+function simulate(timeToRun) {
+    $.ajax({
+        type: "POST",
+        url: "../php/adminSimulation.php",
+        dataType: "json",
+        data: {
+            'timeToRun': timeToRun
+        },
+        success: function (data) {
+           console.log(data);
+	   console.log(polygonData);
+
+	   for (let i=0; i<data.length; i++) {
+		if(data[i]["demand"] < 0.8) {
+		    console.log("trol");
+		    initialMapLayer.getLayer(i).setStyle({color: "red",fillColor: "red",opacity: "0.5"});
+		    initialMapLayer.getLayer(i).bindPopup("<br>DONNA SUMMER</br>");
+		}
+	  }
+        },
+        error: function () {
+         alert('Error');
+        }
+    });
+}
 
 //TODO Start simulation after validating data
