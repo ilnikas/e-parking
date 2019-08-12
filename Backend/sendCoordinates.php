@@ -2,27 +2,38 @@
 
 require("/var/www/phpIncludes/dbConnect.php"); //returns database connection as $conn --File put outside of /var/www/html for security reasons
 
-$result = $conn->query("SELECT ST_AsGeoJSON(coordinates) from Polygons;");
+$result = $conn->query("SELECT polygon_id, ST_AsGeoJSON(coordinates), curve_id, population_block, parking_spaces from Polygons;");
 $currentRow = 0; //IF ADDED BY 1 IT'S ALSO POLYGON ID
 
 $numberRows = mysqli_num_rows($result);
 
-echo '{ "type": "FeatureCollection", "features": ['; //FORMATTING DATA AS FEAUTURE COLLECTION SO EVERYTHING WILL BE SEND WITH ONE AJAX CALL
+//CREATING FEATURE COLLECTINO GEOJSON OBJECT SO IT CAN BE ADDED IMMEDIATELY VIA LEAFLET
+
+$geojsonObject = array(
+    'type'      => 'FeatureCollection',
+    'features'  => array()
+ );
 
 while ($row = mysqli_fetch_row($result)) {
-    echo '{ "type": "Feature", "geometry": '; //FORMATTING DATA AS FEAUTURE COLLECTION
 
-    foreach ($row as $field){ 
-        echo $field; //GETTING DATA FOR EACH FIELD OF EVERY ROW (ALREADY IN JSON FORMAT NO NEED FOR json_encode
-    }
-    echo "}"; //FORMATTING DATA AS FEAUTURE COLLECTION
-    $currentRow = $currentRow + 1;
+    $feature = array(
+        'type' => 'Feature',
+        'geometry' => json_decode(($row[1])),
+        'properties' => array(
+            'id' => $row[0],
+            'demandCurve' => $row[2],
+            'population' => $row[3],
+            'totalParkingSpaces' => $row[4]
+        )
+    );
 
-   if ($currentRow < $numberRows) {echo ", ";} // AT THE LAST FEAUTURE NO NEED TO PRINT ','
+    array_push($geojsonObject['features'], $feature);
 
 }
-echo " ] }"; //FORMATTING DATA AS FEAUTURE COLLECTION
+echo json_encode($geojsonObject, JSON_NUMERIC_CHECK);
 
+unset($feature);
+unset($geojsonObject);
 mysqli_free_result($result);
 
 mysqli_close($conn);
