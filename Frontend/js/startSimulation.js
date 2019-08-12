@@ -165,6 +165,8 @@ function validate_simul()
 		return false;}
 }
 
+//________________________________________STARTING SIMULATION FOR SPECIFIED TIME____________________________________
+
 function simulate(timeToRun) {
     $.ajax({
         type: "POST",
@@ -173,17 +175,35 @@ function simulate(timeToRun) {
         data: {
             'timeToRun': timeToRun
         },
-        success: function (data) {
-           console.log(data);
-	   console.log(polygonData);
-
-	   for (let i=0; i<data.length; i++) {
-		if(data[i]["demand"] < 0.8) {
-		    console.log("trol");
-		    initialMapLayer.getLayer(i).setStyle({color: "red",fillColor: "red",opacity: "0.5"});
-		    initialMapLayer.getLayer(i).bindPopup("<br>DONNA SUMMER</br>");
-		}
-	  }
+        success: function(demandData) {
+			console.log(demandData);
+			for(let polygonIndex=0; polygonIndex < demandData.length; polygonIndex++) { //INDEX OF TWO POLYGONS HAVE PERFECT CORRESPONDENCE SINCE BOTH RESULTS THAT ARE RETURNED TO CLIENT ARE SORTED BY POLYGON ID -- SO NO SEARCH IS REQUIRED
+				if((demandData[polygonIndex]["demand"]) <= 0.59) {   				   
+					//green
+					initialMapLayer.getLayer(polygonIndex + 1).setStyle({ //+1 BECAUSE LAYER ID'S STARTS FROM 1 (SAME AS FEATURE ID'S)
+						"color": "green",
+						"fillColor": "green",
+						"weight": 6,
+						"opacity": 0.5
+				   });
+				} else if ((demandData[polygonIndex]["demand"]) <= 0.84) {
+					//yellow
+					initialMapLayer.getLayer(polygonIndex + 1).setStyle({ //+1 BECAUSE LAYER ID'S STARTS FROM 1 (SAME AS FEATURE ID'S)
+						"color": "yellow",
+						"fillColor": "yellow",
+						"weight": 6,
+						"opacity": 0.5
+				   });
+				} else {
+					//red
+					initialMapLayer.getLayer(polygonIndex + 1).setStyle({ //+1 BECAUSE LAYER ID'S STARTS FROM 1 (SAME AS FEATURE ID'S)
+						"color": "red",
+						"fillColor": "red",
+						"weight": 6,
+						"opacity": 0.5
+				   });
+				}
+  			}
         },
         error: function () {
          alert('Error');
@@ -191,4 +211,3 @@ function simulate(timeToRun) {
     });
 }
 
-//TODO Start simulation after validating data

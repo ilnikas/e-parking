@@ -62,7 +62,6 @@ if(!isset($_SESSION['username'])){
 
             <div class="mainPart">
                 <h3 id="cityDataTitle">Στοιχεία πόλης</h3> <br>
-                <button id="testingSimulation" onclick="simulate(1030)">Test Simulation</button> <!-- TODO REMOVE AFTER TESTING -->
                 <div id="mapAndButtons">
                     <div id="map">
                         map
@@ -98,7 +97,5 @@ if(!isset($_SESSION['username'])){
     <script src="../js/adminMap.js"></script>
     <script src="../js/uploadKmlFile.js"></script>
     <script src="../js/getPolygons.js"></script>
-
-    <script src="../js/doAdminSimulation.js"></script> <!-- TODO AFTER TESTING PUT FUNCTION IN START SIMULATION FILE -->
 
 </html>
