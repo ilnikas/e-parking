@@ -2,7 +2,11 @@ var exactTime;
 var exactHours;
 var exactMins;
 var absoluteTime;
+<<<<<<< HEAD
 var currSimulationTime; //to be returned
+=======
+var currSimulationTime = ""; //to be returned
+>>>>>>> admin_Simulation
 var offsetTime;
 var today = new Date();
 
@@ -12,12 +16,18 @@ var btn2 = document.getElementById("simulationButtonM");
 var btn3 = document.getElementById("simulationButtonR");
 var closeButton = document.getElementsByClassName("closeModal")[1]; //button that closes poppup
 
+
 btn1.onclick = function() {
 	absoluteTime = Number(absoluteTime) - Number(offsetTime);
 	if(absoluteTime < 0){ absoluteTime = absoluteTime + Number(1440);}
 	currSimulationTime = absToCurr(absoluteTime);
 	alert("curr simul time is: " +currSimulationTime);
+<<<<<<< HEAD
 	//some AJAX to send "currSimulationTime" variable to server
+=======
+	currSimulationTime = "" +currSimulationTime;
+	simulate(currSimulationTime);
+>>>>>>> admin_Simulation
   }
 
 btn2.onclick = function() {
@@ -29,6 +39,11 @@ btn3.onclick = function() {
 	if(absoluteTime > 1439){ absoluteTime = absoluteTime - Number(1440);}
 	currSimulationTime = absToCurr(absoluteTime);
 	alert("curr simul time is: " +currSimulationTime);
+<<<<<<< HEAD
+=======
+    currSimulationTime = "" +currSimulationTime;
+	simulate(currSimulationTime);
+>>>>>>> admin_Simulation
   }
 
 closeButton.onclick = function() {
@@ -42,7 +57,11 @@ function absToCurr(absTime){
 	var currSimTime;
 	var exHours = ~~(absTime / 60);
 	var exMins = absTime % 60;
+<<<<<<< HEAD
 		if( (exHours < 10) && (exMins < 10) ){		
+=======
+		if( (exHours < 10) && (exMins < 10) ){
+>>>>>>> admin_Simulation
 		currSimTime = "0" + exHours + "0" + exMins;}
 		else if( exHours < 10 ) {currSimTime = "0" + exHours + exMins;}
 		else if( exMins < 10 ) {currSimTime = "" + exHours + "0" + exMins;}
@@ -88,8 +107,14 @@ function validate_simul()
 		currSimulationTime = absToCurr(absoluteTime);
 		alert("curr simul time is: " +currSimulationTime);
 		modal2.style.display = "none";
+<<<<<<< HEAD
 		return false;
 		//some AJAX to send "currSimulationTime" variable to server
+=======
+        currSimulationTime = "" +currSimulationTime;
+		simulate(currSimulationTime);
+        return false;
+>>>>>>> admin_Simulation
 		}
 
   if( (afterTimeResult == false && emptySet2 == false) && (emptySet1 == true || inputTimeResult ==true) ){
@@ -97,6 +122,7 @@ function validate_simul()
 		return false;}
 
   if( emptySet1 == true && afterTimeResult == true ){
+		var mylog = 1;
 		exactHours = today.getHours();
 		exactMins = today.getMinutes();
 		offsetTime = afterTime;
@@ -106,9 +132,20 @@ function validate_simul()
 		absoluteTime = exactHours * 60 + Number(exactMins);
 		currSimulationTime = absToCurr(absoluteTime);
 		alert("curr simul time is: " +currSimulationTime);
+<<<<<<< HEAD
 		modal2.style.display = "none";
 		return false;
 		//some AJAX to send "currSimulationTime" variable to server
+=======
+		currSimulationTime = 2 * currSimulationTime;
+		currSimulationTime = "" +currSimulationTime;
+		if(typeof currSimulationTime === 'string'){mylog = 2}
+		alert("my log is: " +mylog);
+		modal2.style.display = "none";
+	    currSimulationTime = "" +currSimulationTime;
+		simulate(currSimulationTime);
+		return false;
+>>>>>>> admin_Simulation
 		}
 
   if( inputTimeResult == false && (emptySet2 == true || afterTimeResult ==true) ){
@@ -127,8 +164,14 @@ function validate_simul()
 		currSimulationTime = absToCurr(absoluteTime);
 		alert("curr simul time is: " +currSimulationTime);
 		modal2.style.display = "none";
+<<<<<<< HEAD
 		return false;
 		//some AJAX to send "currSimulationTime" variable to server
+=======
+	    currSimulationTime = "" +currSimulationTime;
+		simulate(currSimulationTime);
+        return false;
+>>>>>>> admin_Simulation
 		}
 
   else if( inputTimeResult == true && afterTimeResult == true ){
@@ -143,8 +186,14 @@ function validate_simul()
 		currSimulationTime = absToCurr(absoluteTime);
 		alert("curr simul time is: " +currSimulationTime);
 		modal2.style.display = "none";
+<<<<<<< HEAD
 		return false;
 		//some AJAX to send "currSimulationTime" variable to server
+=======
+	    currSimulationTime = "" +currSimulationTime;
+		simulate(currSimulationTime);
+		return false;
+>>>>>>> admin_Simulation
 		}
 
   else {
@@ -152,5 +201,49 @@ function validate_simul()
 		return false;}
 }
 
+//________________________________________STARTING SIMULATION FOR SPECIFIED TIME____________________________________
 
-//TODO Start simulation after validating data
+function simulate(timeToRun) {
+    $.ajax({
+        type: "POST",
+        url: "../php/adminSimulation.php",
+        dataType: "json",
+        data: {
+            'timeToRun': timeToRun
+        },
+        success: function(demandData) {
+			console.log(demandData);
+			for(let polygonIndex=0; polygonIndex < demandData.length; polygonIndex++) { //INDEX OF TWO POLYGONS HAVE PERFECT CORRESPONDENCE SINCE BOTH RESULTS THAT ARE RETURNED TO CLIENT ARE SORTED BY POLYGON ID -- SO NO SEARCH IS REQUIRED
+				if((demandData[polygonIndex]["demand"]) <= 0.59) {   				   
+					//green
+					initialMapLayer.getLayer(polygonIndex + 1).setStyle({ //+1 BECAUSE LAYER ID'S STARTS FROM 1 (SAME AS FEATURE ID'S)
+						"color": "green",
+						"fillColor": "green",
+						"weight": 6,
+						"opacity": 0.5
+				   });
+				} else if ((demandData[polygonIndex]["demand"]) <= 0.84) {
+					//yellow
+					initialMapLayer.getLayer(polygonIndex + 1).setStyle({ //+1 BECAUSE LAYER ID'S STARTS FROM 1 (SAME AS FEATURE ID'S)
+						"color": "yellow",
+						"fillColor": "yellow",
+						"weight": 6,
+						"opacity": 0.5
+				   });
+				} else {
+					//red
+					initialMapLayer.getLayer(polygonIndex + 1).setStyle({ //+1 BECAUSE LAYER ID'S STARTS FROM 1 (SAME AS FEATURE ID'S)
+						"color": "red",
+						"fillColor": "red",
+						"weight": 6,
+						"opacity": 0.5
+				   });
+				}
+  			}
+        },
+        error: function () {
+         alert('Error');
+        }
+    });
+}
+

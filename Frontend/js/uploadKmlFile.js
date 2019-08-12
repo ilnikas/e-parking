@@ -40,7 +40,9 @@ function fileUpload(form, actionUrl, infoDivId) {
         document.getElementById(infoDivId).innerHTML = msgIframe; //displaying message
 
         // Deleting frame
-        setTimeout('myIframe.parentNode.removeChild(myIframe)', 250); //TODO CHECK WHAT HAPPENDS IF YOU REMOVE SET TIMEOUT AND DELETE INSTANTLY
+        if(typeof(myIframe) !== "undefined") {
+            myIframe.parentNode.removeChild(myIframe);
+        }
 
         fetchCoordinates(); //AFTER FILE GETS UPLOADED AND PARSED INTO DATABASE FETCH COORDINATES TO CLIENT
         
