@@ -12,6 +12,7 @@ function fetchCoordinates() {
                  "opacity": 0.5
             };
 
+            polygonsInfo = polygonCoordinates;
             initialMapLayer = L.geoJSON(polygonCoordinates, {
                style: defaultStyle,
                onEachFeature: function(feature, layer) {
@@ -31,6 +32,7 @@ function fetchCoordinates() {
 }
 
 var initialMapLayer; //STORING GEOJSON LAYER CREATED FROM FEATURE COLLECTION OBJECT RETURNED FROM SERVER
+var polygonsInfo; //STORING INFORMATION FOR POLYGONS GLOBALLY
 document.addEventListener("load",fetchCoordinates()); //on load get coordinates and draw on map
 
 document.getElementById("timeForm").onsubmit = function() {
