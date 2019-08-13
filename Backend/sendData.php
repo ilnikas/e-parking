@@ -2,7 +2,7 @@
 
 require("/var/www/phpIncludes/dbConnect.php"); //returns database connection as $conn --File put outside of /var/www/html for security reasons
 
-$result = $conn->query("SELECT polygon_id, ST_AsGeoJSON(coordinates), curve_id, population_block, parking_spaces from Polygons ORDER BY polygon_id;");
+$result = $conn->query("SELECT polygon_id, ST_AsGeoJSON(coordinates), ST_AsGeoJSON(centroid), curve_id, population_block, parking_spaces from Polygons ORDER BY polygon_id;");
 $currentRow = 0; //IF ADDED BY 1 IT'S ALSO POLYGON ID
 
 $numberRows = mysqli_num_rows($result);
@@ -18,12 +18,13 @@ while ($row = mysqli_fetch_row($result)) {
 
     $feature = array(
         'type' => 'Feature',
-        'geometry' => json_decode(($row[1])),
+        'geometry' => json_decode($row[1]),
         'properties' => array(
             'id' => $row[0],
-            'demandCurve' => $row[2],
-            'population' => $row[3],
-            'totalParkingSpaces' => $row[4]
+            'centroid' => json_decode($row[2]),
+            'demandCurve' => $row[3],
+            'population' => $row[4],
+            'totalParkingSpaces' => $row[5]
         )
     );
 

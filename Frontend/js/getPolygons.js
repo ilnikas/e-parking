@@ -7,7 +7,7 @@ var polygonsInfo; //STORING INFORMATION RETURNED FROM SERVER FOR POLYGONS
 function fetchCoordinates() {
     $.ajax({
         type: "POST",
-        url: "../php/sendCoordinates.php",
+        url: "../php/sendData.php",
         dataType: "json", 
         success: function (polygonCoordinates) {
             console.log(polygonCoordinates); //Testing server response

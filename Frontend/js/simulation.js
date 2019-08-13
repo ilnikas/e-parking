@@ -1,7 +1,7 @@
 function simulate(timeToRun) {
     $.ajax({
         type: "POST",
-        url: "../php/adminSimulation.php",
+        url: "../php/simulation.php",
         dataType: "json",
         data: {
             'timeToRun': timeToRun
