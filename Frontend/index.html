@@ -17,6 +17,7 @@
 		<link rel="stylesheet" href="css/contact.css" type="text/css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="crossorigin=""/>
         <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="crossorigin=""></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <!-- Mostyly for AJAX -->
 
         <title> 
             e-parking 
@@ -63,9 +64,9 @@
             </div>
             <div id="setTime">
                 <p id="timeChangeInfo">Θες να δεις τη διαθεσιμότητα για διαφορετική ώρα;</p>
-                <form action='kati.php'>
+                <form id="timeForm">
                     <div id="insTimeField" >
-                        <input id="insTime" name='timeToCheckAvailability' placeholder='Ώρα' type='text' pattern='^([01]\d|2[0-3])([:.])([0-5]\d)$' required oninvalid='this.setCustomValidity("Η ώρα πρέπει να είναι στη μορφή 14.02 ή 14:02")' oninput='this.setCustomValidity("")'>
+                        <input id="customTime" name='timeToCheckAvailability' placeholder='Ώρα' type='text' pattern='^([01]\d|2[0-3])([:.])([0-5]\d)$' required oninvalid='this.setCustomValidity("Η ώρα πρέπει να είναι στη μορφή 14.02 ή 14:02")' oninput='this.setCustomValidity("")'>
                     </div>
                     <div id='setTimeButtonPos'>
                         <input id='setTimeButton' type='submit' value='Δες τη διαθεσιμότητα'>
@@ -145,6 +146,8 @@
         <script src="js/faq.js"></script>
         <script src="js/dropdownMenuToggle.js"></script>
         <script src="js/userMap.js"></script>
+        <script src="js/simulation.js"></script>
+        <script src="js/userSimulation.js"></script>
     </body>
 
 </html>

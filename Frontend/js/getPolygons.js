@@ -1,4 +1,4 @@
-document.addEventListener("load",fetchCoordinates()); //when admin page loads
+document.addEventListener("load",fetchCoordinates()); //when admin or user page loads
 //there is also call to the fetchCoordinates() function after file gets uploaded and parsed --see file uploadKmlFile.js for the call
 
 var initialMapLayer; //STORING GEOJSON LAYER CREATED FROM FEATURE COLLECTION OBJECT RETURNED FROM SERVER
