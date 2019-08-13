@@ -1,4 +1,5 @@
 <?php
+    global $demandData;
     if(isset($_POST["timeToRun"])) {
         if(preg_match("/^([01]\d|2[0-3])([0-5]\d)$/",$_POST["timeToRun"])) { //CHECKING IF INPUT IS VALID
             $myTime = $_POST["timeToRun"];
@@ -13,12 +14,11 @@
             while ($row = mysqli_fetch_row($myresult)) {
                 $stableDemand = (0.2 * $row[1]) / $row[2]; //calculating stable demand
                 $demand = $row[3] + $stableDemand; //calculating updated demand after adding stable demand
-                $toSend[] = array('id' => $row[0], 'demand' => $demand); //APPROPRIATE FORMAT SO JSON_ENCODE WILL WORK
+                $demandData[] = array('id' => $row[0], 'demand' => $demand); //APPROPRIATE FORMAT SO JSON_ENCODE WILL WORK
             }
 
-            echo json_encode($toSend);
+            echo json_encode($demandData);
 
-            unset($toSend);
             mysqli_free_result($myresult);
 
             mysqli_close($conn);
