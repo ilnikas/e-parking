@@ -24,8 +24,9 @@ function fetchCoordinates() {
 
             //After drawing execute simulation for default (current) time (this is why already implemented fetchCoordinates() function wasn't used here)
             //Default time is current time
-            let today = new Date();
-            let curr_time = today.getHours() + "" + today.getMinutes(); //+ "" used so js will convert this to string
+            let curr_time = new Date().toTimeString().substr(0,5);
+            curr_time = curr_time.replace(":", "");
+            alert("simTime" + curr_time);
             simulate(curr_time);
         }
     });
