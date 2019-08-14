@@ -14,11 +14,12 @@
         $latDelta = $latTo - $latFrom;
         $lonDelta = $lonTo - $lonFrom;
 
-        $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
-        cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+        $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) + cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
         return $angle * $earthRadius;
     }
 
+    //Returns polygons for which the centroid is within radius (first arguement)
+    //Result in array validPolygons or 0 in case there isn't any
     function getPolygonsWithinRadius($radius,$latTo,$lngTo) {
         require_once("/var/www/phpIncludes/dbConnect.php"); // CONNECT TO DB returns connection as $conn
         $myquery = "SELECT polygon_id, ST_X(centroid), ST_Y(centroid), parking_spaces FROM Polygons";
@@ -38,25 +39,27 @@
         }
     }
 
+    //Returns as many random points as the free parking spaces for the polygon --In case no parking spaces are available returns 0
     function generatePointsWithinRadius($polygon, $demandData, $radius = 50) { //Default radius is 50 meters
         //Finding number of free parking spaces at the specified simulation time
         $keyId = $polygon['id'];
         $keyDemand = $demandData[$keyId - 1]['demand']; //demandData array indexes are -1 the id of the polygon they contain (sql querry that calculates them is sorted by id)
-        if($keyDemand >=1) {
-            $numberOfFreeParkingSpaces = 0;
-        } else {
-            $numberOfFreeParkingSpaces = $polygon['parking_spaces'] * (1 - $keyDemand);
-            $numberOfFreeParkingSpaces = (int)floor($numberOfFreeParkingSpaces); //rounding down
+    
+        $numberOfFreeParkingSpaces = $polygon['parking_spaces'] * (1 - $keyDemand);
+        $numberOfFreeParkingSpaces = (int)floor($numberOfFreeParkingSpaces); //rounding down
+        if($numberOfFreeParkingSpaces <= 0) {
+            return 0;
         }
+        
         //Generating as many points as the number of free parking spaces
         $centroidLat = $polygon['centroid_lat'];
         $centroidLng = $polygon['centroid_lng'];
-        for ($counter = 0; $counter < $numberOfFreeParkingSpaces; $counter++) {
-            $theta = 2 * pi() * lcg_value(); //lcg value returns random number between 0 and 1
-            $s = $radius * lcg_value();
-            $points[] = array('lat' => ($centroidLat + $s * cos($theta)), 'lng' => ($centroidLng + $s * sin($theta))); //TODO check if lat lng are other way around and also if formula works for lat lng
+        //TODO CALCULATE RANDOM POINTS WITHING RADIUS OF CENTROID --AS MANY AS FREE PARKING SPACES
+        for($i = 0; i < $numberOfFreeParkingSpaces; $i++) {
+            //TODO calculate a point (lng,lat) within $radius meters of (centroidLng,centroid///Lat)
         }
-        return $points;
+
+
     }
 
 //_______________________________________END OF FUNCTION DEFIINITIONS______________________________________________
@@ -67,6 +70,7 @@
     $radius = (int) $_POST['radius']; //returns 0 if it can't convert
     $time = $_POST['time'];
 
+
     //Validating user input --Coordinates don't need validating cause they're not provided from user
     $time =  str_replace(".", "", $time); //removing '.' if it exists to time will be in correct format 
     $time = str_replace(":", "", $time); //removing ':' if it exists so time will be in correct format
@@ -75,28 +79,19 @@
         exit; //if not valid possible sql injection because data was already validated client side
     }
 
-    $validPolygons = getPolygonsWithinRadius($radius,$lat,$lng); //contains polygon_id and available parking spaces
+    $validPolygons = getPolygonsWithinRadius($radius,$lat,$lng); //contains polygon_id and available parking spaces or 0 in case there weren't any valid polygons
 
     if($validPolygons === 0) {
         exit; //no valid polygons exist
     }
 
+
     echo json_encode($validPolygons);
 
     //Execute simulation for given time
-    //$time = substr_replace($time ,"00",-2); //CHANGING TIME FROM HHMM TO HH00 BECAUSE CURRENT VALUES IN DEMAND_CURVES TABLE CONTAINS TIME IN THAT FORMAT --IF MORE TIME VALUES ARE ADDED ADJUST THIS
-    //$demandData = simulate($time);
-    
-    //foreach($validPolygons as $validPolygon) {
-       // $randomPoints = generatePointsWithinRadius($validPolygons[0],$demandData);
-        //break;
-        //dbscan()
-    //}
-    //echo json_encode(array('original_lat' => $validPolygons[0]['centroid_lat'], 'original_lng' => $validPolygons[0]['centroid_lng'])); //testing
-    //echo json_encode($randomPoints);
+    $time = substr_replace($time ,"00",-2); //CHANGING TIME FROM HHMM TO HH00 BECAUSE CURRENT VALUES IN DEMAND_CURVES TABLE CONTAINS TIME IN THAT FORMAT --IF MORE TIME VALUES ARE ADDED ADJUST THIS
+    $demandData = simulate($time);
 
-    //selection of best cluster
-    //centroid for that cluster
-    //echo data to be returned
+    //TODO generate random points for each polygon in validPolygons array
 
 ?>
