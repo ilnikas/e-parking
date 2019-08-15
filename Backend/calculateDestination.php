@@ -54,10 +54,23 @@
         //Generating as many points as the number of free parking spaces
         $centroidLat = $polygon['centroid_lat'];
         $centroidLng = $polygon['centroid_lng'];
+        $radiusDeg = $radius / 111300; //Converting meters to degrees - One degree in the equator is 111300 meters
         //TODO CALCULATE RANDOM POINTS WITHING RADIUS OF CENTROID --AS MANY AS FREE PARKING SPACES
-        for($i = 0; i < $numberOfFreeParkingSpaces; $i++) {
+        for($i = 0; $i < $numberOfFreeParkingSpaces; $i++) {
             //TODO calculate a point (lng,lat) within $radius meters of (centroidLng,centroid///Lat)
+            $u = lcg_value(); //Generating random value in (0,1)
+            $v = lcg_value(); //Generating random value in (0,1)
+            $w = $radiusDeg * sqrt($u);
+            $t = 2 * pi() * $v;
+            $x = $w * cos($t);
+            $y = $w * sin($t);
+
+            $xFixed = $x / cos(deg2rad($centroidLat));  // Adjusting x-coordinate for the shrinking of the east-west distances
+            $newLat = $y + $centroidLat;
+            $newLng = $xFixed + $centroidLng;
+            $randomPoints[] = array('latitude' => $newLat, 'longitude' => $newLng);
         }
+        return $randomPoints;
 
 
     }
@@ -86,12 +99,21 @@
     }
 
 
-    echo json_encode($validPolygons);
-
     //Execute simulation for given time
     $time = substr_replace($time ,"00",-2); //CHANGING TIME FROM HHMM TO HH00 BECAUSE CURRENT VALUES IN DEMAND_CURVES TABLE CONTAINS TIME IN THAT FORMAT --IF MORE TIME VALUES ARE ADDED ADJUST THIS
     $demandData = simulate($time);
 
     //TODO generate random points for each polygon in validPolygons array
+    for($i = 0; $i < sizeof($validPolygons); $i++) {
+        $pointsForDBScan = generatePointsWithinRadius($validPolygons[$i],$demandData);
+        echo json_encode($pointsForDBScan);
+        break; //testing
+        //TODO execute DBSCAN for $pointsForDBSCan
+    }
+
+    //TODO Compare Clusters and pick the best(s)
+    //TODO Calculate centroid(s) for above cluster(s)
+    //TODO Calculate distance(s) between point(s) and user destination
+    //TODO Generate and echo JSON with calculated information
 
 ?>
