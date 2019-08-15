@@ -2,6 +2,13 @@
 
     require_once("simulationFunction.php");
 
+    require_once("dbscan.php");
+
+    //Used for usort function to sort multidimensional array by sub-arrays size
+    function cmp($a, $b){ 
+        return (count($b) - count($a));
+    }
+
     //Calculates distance in meters given two points in the form of latitude/longitude coordinates using Haversine formula
     function getDistance($latitudeFrom,$longitudeFrom,$latitudeTo,$longitudeTo) {
         $earthRadius = 6371000; //meters --the result unit will be of this type
@@ -72,7 +79,43 @@
         }
         return $randomPoints;
 
+    }
 
+    function getClusterCentroid($data) {
+
+        if (!is_array($data)) return FALSE;
+
+        $numberOfPoints = count($data);
+
+        $X = 0.0;
+        $Y = 0.0;
+        $Z = 0.0;
+
+        foreach ($data as $point)
+        {
+            $lat = $point['latitude'] * pi() / 180;
+            $lon = $point['longitude'] * pi() / 180;
+
+            $a = cos($lat) * cos($lon);
+            $b = cos($lat) * sin($lon);
+            $c = sin($lat);
+
+            $X += $a;
+            $Y += $b;
+            $Z += $c;
+        }
+
+        $X /= $numberOfPoints;
+        $Y /= $numberOfPoints;
+        $Z /= $numberOfPoints;
+
+        $lon = atan2($Y, $X);
+        $hyp = sqrt($X * $X + $Y * $Y);
+        $lat = atan2($Z, $hyp);
+
+        $finalLat = $lat * 180 / pi();
+        $finalLng = $lon * 180 / pi();
+        return array('latitude' => $finalLat, 'longitude' => $finalLng);
     }
 
 //_______________________________________END OF FUNCTION DEFIINITIONS______________________________________________
@@ -103,15 +146,76 @@
     $time = substr_replace($time ,"00",-2); //CHANGING TIME FROM HHMM TO HH00 BECAUSE CURRENT VALUES IN DEMAND_CURVES TABLE CONTAINS TIME IN THAT FORMAT --IF MORE TIME VALUES ARE ADDED ADJUST THIS
     $demandData = simulate($time);
 
-    //TODO generate random points for each polygon in validPolygons array
+    
+    $largestClusters = array(); //Here will be stored the clusters that contain the most points
     for($i = 0; $i < sizeof($validPolygons); $i++) {
-        $pointsForDBScan = generatePointsWithinRadius($validPolygons[$i],$demandData);
-        echo json_encode($pointsForDBScan);
-        break; //testing
-        //TODO execute DBSCAN for $pointsForDBSCan
+        $pointsForDBScan = generatePointsWithinRadius($validPolygons[$i],$demandData); //TODO handle the case where the function returns 0 and move to the next polygon
+        if ($pointsForDBScan !== 0) {
+            //Generate unique id for each point
+            $idStart = 'AAA';
+            $pointIds = array();
+            for($k = 0; $k < sizeof($pointsForDBScan); $k++){
+                $pointIds[$k] = $idStart++; //Going back to actual points using index --$pointIds[0] is id for $pointsForDBScan[0]
+            }
+            //Generating upper diagonal distance matrix
+            $distanceMatrix = array();
+            //For every point
+            for($j = 0; $j < sizeof($pointIds); $j++){
+                $distanceMatrix[$pointIds[$j]] = array(); //For each point there is an array that contains its distances with other points
+                for($l = $j + 1; $l < sizeof($pointIds); $l++){  //For last point there will only be an empty array
+                    $tempDistance = getDistance($pointsForDBScan[$j]['latitude'],$pointsForDBScan[$j]['longitude'],$pointsForDBScan[$l]['latitude'],$pointsForDBScan[$l]['longitude']);
+                    $distanceMatrix[$pointIds[$j]][$pointIds[$l]] = $tempDistance;
+                }
+            }
+            //Finished generating upper diagonal distance matrix
+            //My distance matrix is $distanceMatrix and my point id's are $pointIds --Inputs for DBScan algorithm
+
+            // Setup DBSCAN with distance matrix and unique point IDs
+            if(sizeof($distanceMatrix) > 0) {
+                $DBSCAN = new DBSCAN($distanceMatrix, $pointIds);
+                $epsilon = 35;
+                $minpoints = 5;
+                // Perform DBSCAN clustering
+                $clusters = $DBSCAN->dbscan($epsilon, $minpoints);  //Here are all the clusters calculated for polygon $i
+                //Finding the biggest cluster (assumes the biggest claster for each polygon is only one --not necessarily amongst other polygons too)
+                $counts = array_map('count', $clusters);
+                $key = array_flip($counts)[max($counts)];
+                $largestCluster = $clusters[$key];
+                //Changing from id's to points
+                foreach($largestCluster as &$pointId) {
+                    $key = array_search($pointId, $pointIds);
+                    $pointId = $pointsForDBScan[$key];
+                }
+                unset($pointId); // breaking the reference
+                //Adding cluster to largest clusters
+                array_push($largestClusters,$largestCluster);
+            }
+
+        } //else move to the next polygon
+          
     }
 
-    //TODO Compare Clusters and pick the best(s)
+    //Largest cluster for each polygon has been stored to array $largestClusters
+    usort($largestClusters, 'cmp'); //Storing by size of each sub-array
+    $maxSize = sizeof($largestClusters[0]);
+    $finalClusters = array(); //this contains the biggest clusters from the $largestClusters array (could be more than one)
+    for ($counter =0; $counter < sizeof($largestClusters); $counter++) {
+        if (sizeof($largestClusters[$counter]) == $maxSize) {
+            array_push($finalClusters,$largestClusters[$counter]);
+        }
+    }
+    //TODO calculate centroid for each cluster in $finalClusters
+    foreach($finalClusters as $cluster) {
+        $centroid = getClusterCentroid($cluster);
+        $distance = getDistance($lat,$lng,$centroid['latitude'],$centroid['longitude']);
+        $toSend[] = array('centroid' => $centroid, 'distance' => $distance);
+    }
+
+    echo json_encode($toSend);
+
+
+    
+
     //TODO Calculate centroid(s) for above cluster(s)
     //TODO Calculate distance(s) between point(s) and user destination
     //TODO Generate and echo JSON with calculated information
