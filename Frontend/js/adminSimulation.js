@@ -17,7 +17,7 @@ btn1.onclick = function() {
 	absoluteTime = Number(absoluteTime) - Number(offsetTime);
 	if(absoluteTime < 0){ absoluteTime = absoluteTime + Number(1440);}
 	currSimulationTime = absToCurr(absoluteTime);
-	alert("curr simul time is: " +currSimulationTime);
+	//alert("curr simul time is: " +currSimulationTime);
 	currSimulationTime = "" + currSimulationTime;
 	simulate(currSimulationTime);
   }
@@ -30,7 +30,7 @@ btn3.onclick = function() {
     absoluteTime = Number(absoluteTime) + Number(offsetTime);
 	if(absoluteTime > 1439){ absoluteTime = absoluteTime - Number(1440);}
 	currSimulationTime = absToCurr(absoluteTime);
-	alert("curr simul time is: " +currSimulationTime);
+	//alert("curr simul time is: " +currSimulationTime);
     currSimulationTime = "" +currSimulationTime;
 	simulate(currSimulationTime);
   }
@@ -55,8 +55,8 @@ function absToCurr(absTime){
 }
 
 function setValues(){
-document.getElementById("simulationButtonL").innerHTML = "Εξομοίωση για " +offsetTime +" λεπτά πριν";
-document.getElementById("simulationButtonR").innerHTML = "Εξομοίωση για " +offsetTime +" λεπτά μετά";
+document.getElementById("simulationButtonL").innerHTML = "Simulation before " +offsetTime +" minutes";
+document.getElementById("simulationButtonR").innerHTML = "Simulation after " +offsetTime +" minutes";
 }
 
 function validate_simul()
@@ -90,7 +90,7 @@ function validate_simul()
 		rightButton.style = "display: block;";
 		absoluteTime = exactHours * 60 + Number(exactMins);
 		currSimulationTime = absToCurr(absoluteTime);
-		alert("curr simul time is: " +currSimulationTime);
+		//alert("curr simul time is: " +currSimulationTime);
 		modal2.style.display = "none";
         currSimulationTime = "" +currSimulationTime;
 		simulate(currSimulationTime);
@@ -98,7 +98,7 @@ function validate_simul()
 		}
 
   if( (afterTimeResult == false && emptySet2 == false) && (emptySet1 == true || inputTimeResult ==true) ){
-		alert("parakalw dwste swsta ta lepta sto pedio #2");
+		alert("Please make sure your input in second field is correct");
 		return false;}
 
   if( emptySet1 == true && afterTimeResult == true ){
@@ -111,7 +111,7 @@ function validate_simul()
 		rightButton.style = "display: block;";
 		absoluteTime = exactHours * 60 + Number(exactMins);
 		currSimulationTime = absToCurr(absoluteTime);
-		alert("curr simul time is: " +currSimulationTime);
+		//alert("curr simul time is: " +currSimulationTime);
 		currSimulationTime = 2 * currSimulationTime;
 		currSimulationTime = "" +currSimulationTime;
 		if(typeof currSimulationTime === 'string'){mylog = 2}
@@ -123,7 +123,7 @@ function validate_simul()
 		}
 
   if( inputTimeResult == false && (emptySet2 == true || afterTimeResult ==true) ){
-		alert("parakalw dwste tin wra se swsti morfi sto pedio #1");
+		alert("Please make sure your input in the first field is correct");
 		return false;}
 
   else if( inputTimeResult == true && emptySet2 == true ){
@@ -136,7 +136,7 @@ function validate_simul()
 		rightButton.style = "display: block;";
 		absoluteTime = exactHours * 60 + Number(exactMins);
 		currSimulationTime = absToCurr(absoluteTime);
-		alert("curr simul time is: " +currSimulationTime);
+		//alert("curr simul time is: " +currSimulationTime);
 		modal2.style.display = "none";
 	    currSimulationTime = "" +currSimulationTime;
 		simulate(currSimulationTime);
@@ -153,7 +153,7 @@ function validate_simul()
 		rightButton.style = "display: block;";
 		absoluteTime = exactHours * 60 + Number(exactMins);
 		currSimulationTime = absToCurr(absoluteTime);
-		alert("curr simul time is: " +currSimulationTime);
+		//alert("curr simul time is: " +currSimulationTime);
 		modal2.style.display = "none";
 	    currSimulationTime = "" +currSimulationTime;
 		simulate(currSimulationTime);
@@ -161,7 +161,7 @@ function validate_simul()
 		}
 
   else {
-		alert("parakalw dwste tin wra se swsti morfi sta pedia #1 & #2");
+		alert("Please make sure your input in both fields is correct");
 		return false;}
 }
 

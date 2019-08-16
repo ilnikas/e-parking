@@ -66,6 +66,6 @@ function fileUpload(form, actionUrl, infoDivId) {
     // Submitting the form
     form.submit();
 
-    document.getElementById(infoDivId).innerHTML = "Η μεταφόρτωση του αρχείου έχει ξεκινήσει<br>Παρακαλώ περιμένετε...";
+    document.getElementById(infoDivId).innerHTML = "Uploading...";
 
 }

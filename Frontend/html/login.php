@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html lang="el">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <div id="welcomeMessage">
-                Καλώς ήρθατε!
+                Welcome
             </div>
 
             <div id="mainPageLogin">
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                           }
                         ?>
                     </div>
-                    <input id="submitButton" name="btnSubmit" type="Submit" value="Σύνδεση">
+                    <input id="submitButton" name="btnSubmit" type="Submit" value="Login">
                 </form>
 
             </div>

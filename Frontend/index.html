@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="el">
+<html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Ilias Nikas, Anastasios Xynos">
-        <meta name="description" content="Αναζήτηση ελεύθερων θέσεων parking σε πόλεις">
+        <meta name="description" content="Parking spaces search in cities">
         <meta name="keywords" content="parking, θέσεις, αναζήτηση">
 		<link rel="icon" type="img/png" href="css/img/fav192.png" sizes="192x192" />
 		<link rel="apple-touch-icon" href="css/img/fav180.png" sizes="180x180" />
@@ -29,10 +29,10 @@
         <div id="header">
 			<img id="logo" src="css/img/logo.png">
             <div id="nav-bar-desktop">
-                <a  href="html/login.php">Σύνδεση</a>
-                <a  href="#faq">Συχνές ερωτήσεις</a>
-                <a  href="#about">Πληροφορίες για εμάς</a>
-                <a  href="#contact" id="last-desktop-link">Επικοινωνία</a>
+                <a  href="html/login.php">Login</a>
+                <a  href="#faq">FAQ</a>
+                <a  href="#about">About us</a>
+                <a  href="#contact" id="last-desktop-link">Contact us</a>
             </div>
             <!-- Creating three-lined navigation button-->
             <a href="#" onclick="toggleMenu()" id="nav">
@@ -42,19 +42,19 @@
                 <div class="menu-line"> </div>
             </button>
             <div id="dropdown-content">
-                <a class="dropdownLink" href="html/login.php" onclick="hideMenu()">Σύνδεση</a>
-                <a class="dropdownLink" href="#faq" onclick="hideMenu()">Συχνές ερωτήσεις</a>
-                <a class="dropdownLink" href="#about" onclick="hideMenu()">Πληροφορίες για εμάς</a>
-                <a class="dropdownLink" href="#contact" onclick="hideMenu()">Επικοινωνία</a>
+                <a class="dropdownLink" href="html/login.php" onclick="hideMenu()">Login</a>
+                <a class="dropdownLink" href="#faq" onclick="hideMenu()">FAQ</a>
+                <a class="dropdownLink" href="#about" onclick="hideMenu()">About us</a>
+                <a class="dropdownLink" href="#contact" onclick="hideMenu()">Contact us</a>
             </div>
         </div>
 
         <div id="main">
             <a id="mainButton" href="#mapPage">
-                Πάρκαρε τώρα!
+                Park now!
             </a>
             <a id="info" href="#quest1" onclick="faqjump()";>
-                Πώς λειτουργεί;
+                How it works?
             </a>
 
         </div>
@@ -63,23 +63,23 @@
             <div id="map">
             </div>
             <div id="setTime">
-                <p id="timeChangeInfo">Θες να δεις τη διαθεσιμότητα για διαφορετική ώρα;</p>
+                <p id="timeChangeInfo">Do you want to see the availability for a different time?</p>
                 <form id="timeForm">
                     <div id="insTimeField" >
-                        <input id="customTime" name='timeToCheckAvailability' placeholder='Ώρα' type='text' pattern='^([01]\d|2[0-3])([:.])([0-5]\d)$' required oninvalid='this.setCustomValidity("Η ώρα πρέπει να είναι στη μορφή 14.02 ή 14:02")' oninput='this.setCustomValidity("")'>
+                        <input id="customTime" name='timeToCheckAvailability' placeholder='Time' type='text' pattern='^([01]\d|2[0-3])([:.])([0-5]\d)$' required oninvalid='this.setCustomValidity("Time must be in 14.02 or 14:02 format")' oninput='this.setCustomValidity("")'>
                     </div>
                     <div id='setTimeButtonPos'>
-                        <input id='setTimeButton' type='submit' value='Δες τη διαθεσιμότητα'>
+                        <input id='setTimeButton' type='submit' value='See availability'>
                     </div> 
                 </form>
             </div>
         </div>
 
 	    <div id="faq">
-		    <h2>Συχνές ερωτήσεις</h2>
+		    <h2>FAQ</h2>
 
             <div id="mainFaqContent">
-		    <button id="quest1" class="accordion">Πώς λειτουργεί;</button>
+		    <button id="quest1" class="accordion">How it works?</button>
 		    <div id="ans1" class="panel">
   			    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
 		    </div>
@@ -117,7 +117,7 @@
 	    </div>
 	
 	    <div id="about">
-		    <h2>Πληροφορίες για εμάς</h2>
+		    <h2>About us</h2>
 		    <div id="aboutText">
 		        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. t vero eos et accusamus et iusto odio dignissimos. t vero eos et accusamus et iusto odio dignissimos. t vero eos et accusamus et iusto odio dignissimos.
                 </p>
@@ -128,7 +128,7 @@
 		    <div id="contactText">
             <div class="iconContainer">
 			<i class="fas fa-map-marker-alt"></i>
-            <p>Οδός 33, Πάτρα</p>
+            <p>Street 33, Patras</p>
             </div>
             <div class="iconContainer">
 			<i class="fas fa-phone-square"></i>

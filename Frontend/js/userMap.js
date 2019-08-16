@@ -40,7 +40,7 @@ var greyIcon = new L.Icon({
  });
  
 //What will be displayed on the popup
-var popupContent = "<form id='popupForm'> <div style='text-align: center;'> <input id='radiusInput' placeholder='Ακτίνα (μέτρα)' style='display: inline-block; width: 97%; text-align: center;  height: 20px;' type='number' min='10' max='2500' name='radius' oninvalid='this.setCustomValidity(\"Η ακτίνα πρέπει να είναι μεταξύ του 10 και 2500\")' oninput='this.setCustomValidity(\"\")' required> <br>  <input id='timeInput' placeholder='Ώρα άφιξης' type='text' name='timeToArrive' pattern='^([01]\\d|2[0-3])([:.])([0-5]\\d)$' required oninvalid='this.setCustomValidity(\"Η ώρα πρέπει να είναι στη μορφή 14.02 ή 14:02\")' oninput='this.setCustomValidity(\"\")' style='margin-top: 10px; height: 20px; text-align: center;'> </div> <br> <div style='margin-top: 12px; text-align: center;'><input style='height: 21px; font-size: 12px; border-radius: 5px; border: 1px solid coral; background-corol: lightgrey;' type='submit' value='Αποστολή'></div> </form>";  
+var popupContent = "<form id='popupForm'> <div style='text-align: center;'> <input id='radiusInput' placeholder='Radius (meters)' style='display: inline-block; width: 97%; text-align: center;  height: 20px;' type='number' min='10' max='2500' name='radius' oninvalid='this.setCustomValidity(\"Radius must be between 10 and 2500 meters\")' oninput='this.setCustomValidity(\"\")' required> <br>  <input id='timeInput' placeholder='Arrival time' type='text' name='timeToArrive' pattern='^([01]\\d|2[0-3])([:.])([0-5]\\d)$' required oninvalid='this.setCustomValidity(\"Time must be in 14.02 or 14:02 format\")' oninput='this.setCustomValidity(\"\")' style='margin-top: 10px; height: 20px; text-align: center;'> </div> <br> <div style='margin-top: 12px; text-align: center;'><input style='height: 21px; font-size: 12px; border-radius: 5px; border: 1px solid coral; background-corol: lightgrey;' type='submit' value='Αποστολή'></div> </form>";  
 
 
 
@@ -89,13 +89,13 @@ $(document).on("submit", "#popupForm", function(event){
                let distance = point['distance'];
                destMarker[markerCounter] = L.marker([latDest,lngDest]);
                destMarker[markerCounter].addTo(mymap);
-               destMarker[markerCounter].bindPopup("Απόσταση: " + distance.toFixed(1) + " μέτρα");
+               destMarker[markerCounter].bindPopup("Distance: " + distance.toFixed(1) + " meters");
                markerCounter = markerCounter + 1;
             }
 
          },
          error: function () {
-            alert('Δεν βρέθηκαν διαθέσιμες θέσεις!');
+            alert('No available parking spaces were found!');
          }
    });
    return false;
