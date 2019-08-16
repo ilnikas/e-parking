@@ -11,6 +11,6 @@ realButton.addEventListener("change", function() {
         let filename = realButton.value.replace(/^.*[\\\/]/, ''); //extracting filename from path
         infoChooseFile.innerHTML = filename; //printing filename to infochooseFile element
     } else {
-        infoChooseFile.innerHTML = "Δεν έχει επιλεγεί αρχείο"; //Display default text
+        infoChooseFile.innerHTML = "No file is selected"; //Display default text
     }
 });

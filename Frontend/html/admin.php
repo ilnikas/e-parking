@@ -7,7 +7,7 @@ if(!isset($_SESSION['username'])){
 
 
 <!DOCTYPE html>
-<html lang="el">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,57 +31,57 @@ if(!isset($_SESSION['username'])){
         <div id="wrapper">
             <div id="header">
                 <img id="logo" src="../css/img/logo.png">
-                <a href="../php/logout.php" target="_self">Αποσύνδεση</a>
+                <a href="../php/logout.php" target="_self">Logout</a>
             </div>
             <div class="mainPart">
-                <h3 id="kmlLoadTitle">Φόρτωση kml αρχείου</h3>
+                <h3 id="kmlLoadTitle">Load KML File</h3>
                 <div id="uploadFile">
                     <form>
                         <div id="chooseFile">
                             <input id="realButton" type="file" name="myKmlFile" accept=".kml" hidden="hidden">
-                            <input type="button" class="otherbutton" id="chooseFileButton" value="Επιλέξτε αρχείο">
-                            <span id="infoChooseFile">Δεν έχει επιλεγεί αρχείο</span>
+                            <input type="button" class="otherbutton" id="chooseFileButton" value="Choose file">
+                            <span id="infoChooseFile">No file has been chosen</span>
                         </div>
                         <input id="uploadButton" type="button" value="Upload" onClick="fileUpload(this.form,'../php/uploadKml.php','infoUpload'); return false;">
                         <div id="infoUpload"></div>
                     </form>
                 </div>
-                <h3 id="dataDeleteTitle">Διαγραφή δεδομένων πόλης</h3>
+                <h3 id="dataDeleteTitle">Delete city data</h3>
                 <div id="deleteData">
-                    <button id="deleteDataButton">Διαγραφή</button>
+                    <button id="deleteDataButton">Delete</button>
                     <div id="deleteDataModal" class="modal">
                         <div class="modal-content">
                             <span class="closeModal">&times;</span>
-                            <p>Θα διαγραφούν όλα τα δεδομένα που αφορούν τον πληθυσμό και την ρυμοτομία της πόλης. Είστε σίγουρος πως θέλετε να συνεχίσετε;</p>
-                            <button id="confirmDelete" class="modalButton">Ναι</button>
-                            <button id="cancelDelete" class="modalButton">Όχι</button>
+                            <p>All data concerning city architecture and population will be deleted. Are you sure you want to continue?</p>
+                            <button id="confirmDelete" class="modalButton">Yes</button>
+                            <button id="cancelDelete" class="modalButton">No</button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="mainPart">
-                <h3 id="cityDataTitle">Στοιχεία πόλης</h3> <br>
+                <h3 id="cityDataTitle">City Data</h3> <br>
                 <div id="mapAndButtons">
                     <div id="map">
                         map
                     </div>
 					<div id="simulationFunc">
 					<button id="simulationButtonL"></button>
-                    <button id="simulationButtonM">Εκτέλεση εξομοίωσης</button>
+                    <button id="simulationButtonM">Execute simulation</button>
 					<button id="simulationButtonR"></button>
 					</div>
                     <div id="simulationModal" class="modal">
                         <div class="modal-content">
                             <span class="closeModal">&times;</span>
-                            <p>Παρακαλώ εισάγετε τις παραμέτρους για εκτέλεση εξομοίωσης<br><br></p>
+                            <p>Please enter parameters for simulation<br><br></p>
                             <div id="manualTime">
 								<iframe name="votar" style="display:none;"></iframe>
                                 <form onsubmit="return validate_simul()"> <!-- action="dummy_php": should be done with AJAX instead -->
-                                    (αν το πεδίο παραμείνει κενό, λαμβάνεται υπόψη ως ώρα έναρξης της εξομοίωσης η τρέχουσα ώρα) <br>
-                                    <input type="text" id="settime"> <br>Ώρα<br><br>
-                                    <input type="text" id="aftertime"> <br> Βήμα εξομοίωσης σε λεπτά <br><br>
-                                    <button type="submit" class="modalButton">Εκτέλεση</button>
+                                    (If field remains blank, simulation time is set as the current time) <br>
+                                    <input type="text" id="settime"> <br>Time<br><br>
+                                    <input type="text" id="aftertime"> <br> Simulation step in minutes <br><br>
+                                    <button type="submit" class="modalButton">Execute</button>
                                 </form>
                             </div>
                         </div>
