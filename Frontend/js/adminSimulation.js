@@ -4,7 +4,7 @@ var exactMins;
 var absoluteTime;
 var currSimulationTime = ""; //to be returned
 var offsetTime;
-var today = new Date();
+var today;
 
 var modal2 = document.getElementById("simulationModal");
 var btn1 = document.getElementById("simulationButtonL");
@@ -39,9 +39,6 @@ closeButton.onclick = function() {
     modal2.style.display = "none";
 }
 
-exactHours = today.getHours();
-exactMins = today.getMinutes();
-
 function absToCurr(absTime){
 	var currSimTime;
 	var exHours = ~~(absTime / 60);
@@ -55,8 +52,8 @@ function absToCurr(absTime){
 }
 
 function setValues(){
-document.getElementById("simulationButtonL").innerHTML = "Simulation before " +offsetTime +" minutes";
-document.getElementById("simulationButtonR").innerHTML = "Simulation after " +offsetTime +" minutes";
+document.getElementById("simulationButtonL").innerHTML = "Εξομοίωση για " +offsetTime +" λεπτά πριν";
+document.getElementById("simulationButtonR").innerHTML = "Εξομοίωση για " +offsetTime +" λεπτά μετά";
 }
 
 function validate_simul()
@@ -81,7 +78,8 @@ function validate_simul()
   	afterTimeResult = false;}
   }
 
-  if( emptySet1 == true && emptySet2 == true ) {
+	if( emptySet1 == true && emptySet2 == true ) {
+		today = new Date();
 		exactHours = today.getHours();
 		exactMins = today.getMinutes();
 		offsetTime = 15;
@@ -97,11 +95,11 @@ function validate_simul()
         return false;
 		}
 
-  if( (afterTimeResult == false && emptySet2 == false) && (emptySet1 == true || inputTimeResult ==true) ){
-		alert("Please make sure your input in second field is correct");
+	else if( (afterTimeResult == false && emptySet2 == false) && (emptySet1 == true || inputTimeResult ==true) ){
+		//alert("parakalw dwste swsta ta lepta sto pedio #2");
 		return false;}
 
-  if( emptySet1 == true && afterTimeResult == true ){
+	else if( emptySet1 == true && afterTimeResult == true ){
 		today = new Date();
 		exactHours = today.getHours();
 		exactMins = today.getMinutes();
@@ -119,7 +117,7 @@ function validate_simul()
 		}
 
   if( inputTimeResult == false && (emptySet2 == true || afterTimeResult ==true) ){
-		alert("Please make sure your input in the first field is correct");
+		//alert("parakalw dwste tin wra se swsti morfi sto pedio #1");
 		return false;}
 
   else if( inputTimeResult == true && emptySet2 == true ){
@@ -157,7 +155,7 @@ function validate_simul()
 		}
 
   else {
-		alert("Please make sure your input in both fields is correct");
+		//alert("parakalw dwste tin wra se swsti morfi sta pedia #1 & #2");
 		return false;}
 }
 
