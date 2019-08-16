@@ -271,4 +271,30 @@ form > input {
   }
 
 
-  /*__________________________------__________________*/
+  /*__________________________styling the admin popups__________________*/
+
+
+
+
+.leaflet-popup {
+      margin-right: 17px;        
+  }
+        
+.scroll-bar-wrap:hover .cover-bar {
+   opacity: 0;
+  -webkit-transition: all .5s;
+  }
+        
+.leaflet-popup-content {
+    max-width: 300px;
+    min-height: 100px;
+    margin-right: 17px;
+    padding-bottom: 10px;
+    overflow:  auto;
+    text-align: center;
+  }
+
+select{
+    text-align-last: center;
+}
+
