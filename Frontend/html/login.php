@@ -1,3 +1,19 @@
+<?php
+session_start();
+require_once("/var/www/phpIncludes/credentials.php");
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $wrong = NULL;
+
+    if (password_verify($_POST['username'],$username) && password_verify($_POST['password'],$password)) {
+        $_SESSION["username"] = $username; //session so no one else can access the admin page
+        header("Location:admin.php"); //redirecting to admin page
+    } else {
+        $wrong = "Λανθασμένα στοιχεία username/password.<br>Παρακαλώ προσπαθήστε ξανά";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="el">
     <head>
@@ -20,15 +36,22 @@
             <div id="welcomeMessage">
                 Καλώς ήρθατε!
             </div>
-            
+
             <div id="mainPageLogin">
 
-                <form action="dummy.php">
+                <form method="post" action="login.php">
                     <div id="allInputs">
                         <input class="inputField" type="text" name="username" placeholder="Username">
                         <input class="inputField" id="lastInput" type="password" name="password" placeholder="Password">
+                        <?php
+                          if(isset($wrong)) {
+                            echo "<p style=text-align: center;";
+                            echo $wrong;
+                            echo "</p>";
+                          }
+                        ?>
                     </div>
-                    <input id="submitButton" type="Submit" value="Σύνδεση">
+                    <input id="submitButton" name="btnSubmit" type="Submit" value="Σύνδεση">
                 </form>
 
             </div>
@@ -37,3 +60,4 @@
     </body>
 
 </html>
+

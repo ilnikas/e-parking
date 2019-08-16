@@ -1,6 +1,5 @@
 * { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); } /*Removes outline on tapping link for mobile */
 
-
 body {
     font-size: 100%;
     margin: 0;
@@ -13,7 +12,7 @@ body {
 #wrapper {
     background-color: #292A2D;
     min-height: 100vh;
-    overflow: auto;
+    overflow: hidden;
 }
 
 #header {
@@ -63,6 +62,10 @@ h3 {
     text-emphasis: bold;
 }
 
+button:hover {
+    background-color: #d3d3d3;
+}
+
 button:active {
     background-color: white;
 }
@@ -91,19 +94,50 @@ button {
 #chooseFileButton {
     color: #d07200;
     border: 1px solid #d07200;
+    width: auto;
+    outline: 0;
     margin-top: 10px;
     padding: 5px;
+    background: transparent;
+    border-radius: 5px;
+}
+
+#chooseFileButton:hover {
+    background-color: #d3d3d3;
+}
+
+#chooseFileButton:active {
+    background-color: white;
 }
 
 #uploadButton {
     margin-top: 15px;
     padding: 10px;
+    width: auto;
+    background: transparent;
+    color: darkorange;
+    border: 1px solid darkorange;
+    border-radius: 5px;
+    outline: 0;
+}
+
+#uploadButton:hover {
+    background-color: #d3d3d3;
+}
+
+#uploadButton:active {
+    background-color: white;
 }
 
 
 #infoChooseFile {
     margin-left: 5px;
     font-size: 1rem;
+}
+
+#infoUpload {
+    margin-top: 15px;
+    display: none;
 }
 
 #deleteData {
@@ -134,15 +168,45 @@ button {
 
 #map {
     height: 80vh;
-    width: 80vw;
+    width: 100vw;
     margin-bottom: 10px;
 }
 
-#simulationButton {
-    margin-top: 20px;
+
+
+#simulationFunc {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     padding: 10px;
 }
 
+#simulationButtonL {
+    margin-top: 20px;
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-bottom: 20px;
+    padding: 10px;
+    display: none;
+}
+
+#simulationButtonM {
+    margin-top: 20px;
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-bottom: 20px;
+    padding: 10px;
+}
+
+#simulationButtonR {
+    margin-top: 20px;
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-bottom: 20px;
+    padding: 10px;
+    display: none;
+}
 
 form > input {
     width: 80%;
@@ -198,8 +262,13 @@ form > input {
       outline: 0;
   }
 
+  .modalButtonContainer {
+		display: flex;
+		flex: 3;
+}
   .modalButton:active {
       background-color: #292A2D;
   }
+
 
   /*__________________________------__________________*/

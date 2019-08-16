@@ -1,8 +1,17 @@
+<?php
+session_start();
+if(!isset($_SESSION['username'])){
+   header("Location:login.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="el">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="../css/img/fav.ico" />
         <link rel="stylesheet" href="../css/admin.css" type="text/css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -10,6 +19,7 @@
    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
    crossorigin=""></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <!-- Mostyly for AJAX -->
 
         <title>
             e-parking | Admin
@@ -17,21 +27,24 @@
 
     </head>
 
-    <body>
+    <body onload="setValues()">
         <div id="wrapper">
             <div id="header">
                 <img id="logo" src="../css/img/logo.png">
-                <a href="login.html" target="_self">Αποσύνδεση</a>
+                <a href="../php/logout.php" target="_self">Αποσύνδεση</a>
             </div>
             <div class="mainPart">
                 <h3 id="kmlLoadTitle">Φόρτωση kml αρχείου</h3>
                 <div id="uploadFile">
-                    <div id="chooseFile">
-                        <input id="realButton" type="file" accept=".kml" hidden="hidden">
-                        <button id="chooseFileButton">Επιλέξτε αρχείο</button>
-                        <span id="infoChooseFile">Δεν έχει επιλεγεί αρχείο</span>
-                    </div>
-                    <button id="uploadButton">Upload</button>
+                    <form>
+                        <div id="chooseFile">
+                            <input id="realButton" type="file" name="myKmlFile" accept=".kml" hidden="hidden">
+                            <input type="button" class="otherbutton" id="chooseFileButton" value="Επιλέξτε αρχείο">
+                            <span id="infoChooseFile">Δεν έχει επιλεγεί αρχείο</span>
+                        </div>
+                        <input id="uploadButton" type="button" value="Upload" onClick="fileUpload(this.form,'../php/uploadKml.php','infoUpload'); return false;">
+                        <div id="infoUpload"></div>
+                    </form>
                 </div>
                 <h3 id="dataDeleteTitle">Διαγραφή δεδομένων πόλης</h3>
                 <div id="deleteData">
@@ -48,22 +61,26 @@
             </div>
 
             <div class="mainPart">
-                <h3 id="cityDataTitle">Στοιχεία πόλης</h3>
+                <h3 id="cityDataTitle">Στοιχεία πόλης</h3> <br>
                 <div id="mapAndButtons">
                     <div id="map">
                         map
                     </div>
-                    <button id="simulationButton">Εκτέλεση εξομοίωσης</button>
+					<div id="simulationFunc">
+					<button id="simulationButtonL"></button>
+                    <button id="simulationButtonM">Εκτέλεση εξομοίωσης</button>
+					<button id="simulationButtonR"></button>
+					</div>
                     <div id="simulationModal" class="modal">
                         <div class="modal-content">
                             <span class="closeModal">&times;</span>
-                            <p>Παρακαλώ εισάγετε ώρα για εκτέλεση εξομοίωσης</p>
+                            <p>Παρακαλώ εισάγετε τις παραμέτρους για εκτέλεση εξομοίωσης<br><br></p>
                             <div id="manualTime">
-                                <form action="dummy_php" onsubmit="return validate_simul()">
-                                    Ώρα <br>
-                                    <input type="text" id="settime"> <br><br>ή<br><br>
-                                    Μετά από <br>
-                                    <input type="text" id="aftertime"> <br> λεπτά <br><br>
+								<iframe name="votar" style="display:none;"></iframe>
+                                <form onsubmit="return validate_simul()"> <!-- action="dummy_php": should be done with AJAX instead -->
+                                    (αν το πεδίο παραμείνει κενό, λαμβάνεται υπόψη ως ώρα έναρξης της εξομοίωσης η τρέχουσα ώρα) <br>
+                                    <input type="text" id="settime"> <br>Ώρα<br><br>
+                                    <input type="text" id="aftertime"> <br> Βήμα εξομοίωσης σε λεπτά <br><br>
                                     <button type="submit" class="modalButton">Εκτέλεση</button>
                                 </form>
                             </div>
@@ -73,10 +90,14 @@
             </div>
         </div>
     </body>
-
+	
     <script src="../js/chooseKmlFile.js"></script>
     <script src="../js/confirmDataDelete.js"></script>
-    <script src="../js/startSimulation.js"></script>
     <script src="../js/adminMap.js"></script>
+    <script src="../js/uploadKmlFile.js"></script>
+    <script src="../js/getPolygons.js"></script>
+    <script src="../js/adminSimulation.js"></script>
+    <script src="../js/simulation.js"></script>
+    <script src="../js/dataDelete.js"></script>
 
 </html>
