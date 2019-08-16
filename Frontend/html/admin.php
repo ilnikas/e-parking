@@ -78,7 +78,7 @@ if(!isset($_SESSION['username'])){
                             <div id="manualTime">
 								<iframe name="votar" style="display:none;"></iframe>
                                 <form onsubmit="return validate_simul()"> <!-- action="dummy_php": should be done with AJAX instead -->
-                                    (If feild remains blank, simulation time is set as the current time) <br>
+                                    (If field remains blank, simulation time is set as the current time) <br>
                                     <input type="text" id="settime"> <br>Time<br><br>
                                     <input type="text" id="aftertime"> <br> Simulation step in minutes <br><br>
                                     <button type="submit" class="modalButton">Execute</button>
