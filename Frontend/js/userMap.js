@@ -40,7 +40,7 @@ var greyIcon = new L.Icon({
  });
  
 //What will be displayed on the popup
-var popupContent = "<form id='popupForm'> <div style='text-align: center;'> <input id='radiusInput' placeholder='Radius (meters)' style='display: inline-block; width: 97%; text-align: center;  height: 20px;' type='number' min='10' max='2500' name='radius' oninvalid='this.setCustomValidity(\"Radius must be between 10 and 2500 meters\")' oninput='this.setCustomValidity(\"\")' required> <br>  <input id='timeInput' placeholder='Arrival time' type='text' name='timeToArrive' pattern='^([01]\\d|2[0-3])([:.])([0-5]\\d)$' required oninvalid='this.setCustomValidity(\"Time must be in 14.02 or 14:02 format\")' oninput='this.setCustomValidity(\"\")' style='margin-top: 10px; height: 20px; text-align: center;'> </div> <br> <div style='margin-top: 12px; text-align: center;'><input style='height: 21px; font-size: 12px; border-radius: 5px; border: 1px solid coral; background-corol: lightgrey;' type='submit' value='Αποστολή'></div> </form>";  
+var popupContent = "<form id='popupForm'> <div style='text-align: center;'> <input id='radiusInput' placeholder='Radius (meters)' style='display: inline-block; width: 97%; text-align: center;  height: 20px;' type='number' min='10' max='2500' name='radius' oninvalid='this.setCustomValidity(\"Radius must be between 10 and 2500 meters\")' oninput='this.setCustomValidity(\"\")' required> <br>  <input id='timeInput' placeholder='Arrival time' type='text' name='timeToArrive' pattern='^([01]\\d|2[0-3])([:.])([0-5]\\d)$' required oninvalid='this.setCustomValidity(\"Time must be in 14.02 or 14:02 format\")' oninput='this.setCustomValidity(\"\")' style='margin-top: 10px; height: 20px; text-align: center;'> </div> <br> <div style='margin-top: 12px; text-align: center;'><input style='height: 21px; font-size: 12px; border-radius: 5px; border: 1px solid coral; background-corol: lightgrey;' type='submit' value='Send'></div> </form>";  
 
 
 
@@ -56,7 +56,7 @@ mymap.on("click",function(e) {
 
    //adding the marker
    myMarker = L.marker([latDest,lngDest], {icon: greyIcon}).addTo(mymap);
-   myMarker.bindPopup(popupContent); //Adding popup to enter variables "radius" and "timeToArrive"  that will be sent to server
+   myMarker.bindPopup(popupContent).openPopup(); //Adding popup to enter variables "radius" and "timeToArrive"  that will be sent to server
 
   
 });
