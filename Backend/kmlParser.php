@@ -12,8 +12,13 @@ if ($connection->query($setPopulation) === TRUE) { /*echo "Succesfull";*/ } else
 if ($connection->query($setCentroid) === TRUE) {/*echo "Succesfull";*/} else { /*echo "FAiled";*/}
 if ($connection->query($setCurveId) === TRUE) { /*echo "Succesfull";*/} else { /*echo "FAiled";*/}
 
-    // Inserting data
-    $insertQuerry = "INSERT INTO Polygons (population_block,centroid,coordinates,parking_spaces,curve_id) VALUES (@_population,@_centroid,@_coordinates,DEFAULT,@_curveId)";
+// Inserting data
+if($population != 0){
+    $parkingSpaces = mt_rand(0.15*$population,0.8*$population); //Initial parking spaces values are generated randomly
+} else {
+    $parkingSpaces = mt_rand(20,100);
+}
+$insertQuerry = "INSERT INTO Polygons (population_block,centroid,coordinates,parking_spaces,curve_id) VALUES (@_population,@_centroid,@_coordinates,".$parkingSpaces.",@_curveId)";
 if ($connection->query($insertQuerry) === TRUE) { /*echo "Insert Querry Succesfull";*/ } else { /*echo "Insert Querry FAiled";*/}
 
 }

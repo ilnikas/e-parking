@@ -26,7 +26,7 @@ function fetchCoordinates() {
             //Default time is current time
             let curr_time = new Date().toTimeString().substr(0,5);
             curr_time = curr_time.replace(":", "");
-            alert("simTime" + curr_time);
+            //alert("simTime" + curr_time);
             simulate(curr_time);
         }
     });

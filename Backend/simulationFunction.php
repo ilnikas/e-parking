@@ -9,7 +9,11 @@
         $myresult = $conn->query($myquery);
 
         while ($row = mysqli_fetch_row($myresult)) {
-            $stableDemand = (0.2 * $row[1]) / $row[2]; //calculating stable demand
+            if($row[2] == 0) {
+                $stableDemand = 0;
+            } else {
+                $stableDemand = (0.2 * $row[1]) / $row[2]; //calculating stable demand
+            }
             $demand = $row[3] + $stableDemand; //calculating updated demand after adding stable demand
             $demandData[] = array('id' => $row[0], 'demand' => $demand); //APPROPRIATE FORMAT SO JSON_ENCODE WILL WORK
         }

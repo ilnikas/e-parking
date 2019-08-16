@@ -8,7 +8,6 @@ function simulate(timeToRun) {
         },
         success: function(demandData) {
 			console.log(demandData);
-			// TODO Delete all markers
 		
 			for(let polygonIndex=0; polygonIndex < demandData.length; polygonIndex++) { //INDEX OF TWO POLYGONS HAVE PERFECT CORRESPONDENCE SINCE BOTH RESULTS THAT ARE RETURNED TO CLIENT ARE SORTED BY POLYGON ID -- SO NO SEARCH IS REQUIRED
 				if((demandData[polygonIndex]["demand"]) <= 0.59) {   				   
