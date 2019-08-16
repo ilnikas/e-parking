@@ -102,7 +102,7 @@ function validate_simul()
 		return false;}
 
   if( emptySet1 == true && afterTimeResult == true ){
-		var mylog = 1;
+		today = new Date();
 		exactHours = today.getHours();
 		exactMins = today.getMinutes();
 		offsetTime = afterTime;
@@ -112,10 +112,6 @@ function validate_simul()
 		absoluteTime = exactHours * 60 + Number(exactMins);
 		currSimulationTime = absToCurr(absoluteTime);
 		//alert("curr simul time is: " +currSimulationTime);
-		currSimulationTime = 2 * currSimulationTime;
-		currSimulationTime = "" +currSimulationTime;
-		if(typeof currSimulationTime === 'string'){mylog = 2}
-		alert("my log is: " +mylog);
 		modal2.style.display = "none";
 	    currSimulationTime = "" +currSimulationTime;
 		simulate(currSimulationTime);
