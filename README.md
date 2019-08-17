@@ -15,7 +15,7 @@ Below follows a description of the features of the website for a normal *user* a
 - Load KML file <br> Admin selects and uploads kml file to server <br>
 - Delete data <br> All data related to blocks (polygons) of the city gets deleted <br>
 - View city data <br> Uppon load of page city data are being displayed in a map as semi-transparent grey polygons <br>
-- Blocks management (not implemented yet) <br> When a block gets clicked in the map a popup opens that allows admin to view and edit number of parking spaces and demand curve that is matched to that block <br>
+- Blocks management <br> When a block gets clicked in the map a popup opens that allows admin to view and edit number of parking spaces and demand curve that is matched to that block <br>
 - Execute simulation <br> When the "Execute simulation" button is clicked modal opens to enter time of the desired simulation and also a time step in minutes. After that simulation is executed for specified time and two more button appear to execute simulation before (left button) and after (right button) the time step
 
 ### User features
@@ -25,4 +25,13 @@ Below follows a description of the features of the website for a normal *user* a
 
 
 ### Simulation
-Simulation is executed for a specified time. For each block (polygon) a demand percentage is calculated using the population of the block (20% of the population is considered to always occupy the parking spaces) and demand curve data. If the final demand is between 0 and 59% then the block is colored green, if it's between 60% and 84% then it is colored yellow. Finally, if it is greater than 85% it is colored red. 
+Simulation is executed for a specified time. For each block (polygon) a demand percentage is calculated using the population of the block (20% of the population is considered to always occupy the parking spaces) and demand curve data. If the final demand is between 0 and 59% then the block is colored green, if it's between 60% and 84% then it is colored yellow. Finally, if it is greater than 85% it is colored red.
+
+
+### Accessing the website
+To view the website follow <a href="http://snf-869308.vm.okeanos.grnet.gr/">this</a> link. <br>
+You can also access the admin page. Credentials are: 
+- Username: admin
+- Password: admin
+
+For obvious reasons the *Load KML file* and *Delete data* features have been disabled.
