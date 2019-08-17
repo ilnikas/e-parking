@@ -23,7 +23,7 @@ function update_spaces(numSpaces, polid) {
 
 if( (numSpaces>=0) && (numSpaces<=4999) ) {
 
-alert("num of new spaces of polygon " +polid + " will be: " +numSpaces);
+alert("Number of new spaces of polygon " +polid + " will be: " +numSpaces);
 
 
 $.ajax({
@@ -45,14 +45,15 @@ else { alert("parking spaces input exceeds limits (0 to 4999)"); }
 }
 
 function update_curve(demCurve, polid) {
-alert("num of new curve will be: " +demCurve);
+alert("Number of new curve will be: " +demCurve);
 
 $.ajax({
  method: "POST",
  url: "../php/updateCurve.php",
  data: { demCurve: demCurve, polid: polid },
  success: function() {
-            location.reload(false); //REFRESHING PAGE WHILE MAINTAINING CACHED DATA
+            //location.reload(false); //REFRESHING PAGE WHILE MAINTAINING CACHED DATA
+            alert("Succesfull update!");
         },
         error: function() {
             alert("error");
