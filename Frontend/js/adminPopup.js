@@ -31,7 +31,8 @@ $.ajax({
  url: "../php/updateSpaces.php",
  data: { numSpaces: numSpaces, polid: polid },
  success: function() {
-            location.reload(false); //REFRESHING PAGE WHILE MAINTAINING CACHED DATA
+            //location.reload(false); //REFRESHING PAGE WHILE MAINTAINING CACHED DATA
+            alert("Succesfull update!");
         },
         error: function() {
             alert("error");
