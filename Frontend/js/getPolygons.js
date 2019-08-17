@@ -23,7 +23,7 @@ function fetchCoordinates() {
                style: defaultStyle,
                onEachFeature: function(feature, layer) {
                     layer._leaflet_id = feature["properties"]["id"];  //LAYER ID'S COORRELATE WITH POLYGON ID'S
-                    //TODO BIND POPUP FOR EACH FEATURE
+                    initializePopup(layer);
                 }
             });
             initialMapLayer.addTo(mymap);
