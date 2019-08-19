@@ -1,7 +1,7 @@
 <?php
    if( isset($_POST['demCurve']) && isset($_POST['polid'])  ) {
 
-   if(preg_match("/^([0-2])$/",$_POST["numSpaces"])) {
+   if(preg_match("/^([0-2])$/",$_POST["demCurve"])) {
 
    $curve = $_POST['demCurve'];
    $polygonId = $_POST['polid'];
