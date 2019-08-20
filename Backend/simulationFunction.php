@@ -9,12 +9,14 @@
         $myresult = $conn->query($myquery);
 
         while ($row = mysqli_fetch_row($myresult)) {
-            if($row[2] == 0) {
-                $stableDemand = 0;
+            $stableDemand = (int)ceil(0.2 * $row[1]); //calculating stable demand --number of positions that are never available 
+            $spacesLeft = $row[2] - $stableDemand;
+            if (($spacesLeft <= 0) || ($row[2] == 0)) { //If stable demand takes up all spaces or if there are no available parking spaces in the block demand is 100%
+                $demand = 1; //No spaces available
             } else {
-                $stableDemand = (0.2 * $row[1]) / $row[2]; //calculating stable demand
+                $availableSpaces = $spacesLeft - (int)ceil($row[3] * $spacesLeft);
+                $demand = 1 - ($availableSpaces / $row[2]);
             }
-            $demand = $row[3] + $stableDemand; //calculating updated demand after adding stable demand
             $demandData[] = array('id' => $row[0], 'demand' => $demand); //APPROPRIATE FORMAT SO JSON_ENCODE WILL WORK
         }
 
