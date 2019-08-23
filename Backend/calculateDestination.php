@@ -177,18 +177,22 @@
                 $minpoints = 5;
                 // Perform DBSCAN clustering
                 $clusters = $DBSCAN->dbscan($epsilon, $minpoints);  //Here are all the clusters calculated for polygon $i
-                //Finding the biggest cluster (assumes the biggest claster for each polygon is only one --not necessarily amongst other polygons too)
-                $counts = array_map('count', $clusters);
-                $key = array_flip($counts)[max($counts)];
-                $largestCluster = $clusters[$key];
-                //Changing from id's to points
-                foreach($largestCluster as &$pointId) {
-                    $key = array_search($pointId, $pointIds);
-                    $pointId = $pointsForDBScan[$key];
+                //Finding the biggest cluster(s)
+                usort($clusters, 'cmp'); //Storing by size of each sub-array
+                $maxClusterSize = sizeof($clusters[0]); //Biggest size stored here
+                for ($counter = 0; $counter < sizeof($clusters); $counter++) {
+                    if (sizeof($clusters[$counter]) == $maxClusterSize) {
+                        //Changing from id's to points
+                        foreach($clusters[$counter] as &$pointId) {
+                            $key = array_search($pointId, $pointIds);
+                            $pointId = $pointsForDBScan[$key];
+                        }
+                        unset($pointId); // breaking the reference
+                        array_push($largestClusters,$clusters[$counter]); //Adding largest cluster(s) for polygon to array largestClusters
+                    } else {
+                        break;
+                    }
                 }
-                unset($pointId); // breaking the reference
-                //Adding cluster to largest clusters
-                array_push($largestClusters,$largestCluster);
             }
 
         } //else move to the next polygon
@@ -202,6 +206,8 @@
     for ($counter =0; $counter < sizeof($largestClusters); $counter++) {
         if (sizeof($largestClusters[$counter]) == $maxSize) {
             array_push($finalClusters,$largestClusters[$counter]);
+        } else {
+            break;
         }
     }
     //TODO calculate centroid for each cluster in $finalClusters
