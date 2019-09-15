@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="el">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>Uploading KML</title>
