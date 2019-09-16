@@ -10,7 +10,7 @@
     color: white;
 	  margin-top: 10px;
 	  font-weight: normal;
-	  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	  font-family: sans-serif, Haettenschweiler, 'Arial Narrow Bold';
 }
 
 button::-moz-focus-inner {
