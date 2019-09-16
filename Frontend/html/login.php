@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION["username"] = $username; //session so no one else can access the admin page
         header("Location:admin.php"); //redirecting to admin page
     } else {
-        $wrong = "Λανθασμένα στοιχεία username/password.<br>Παρακαλώ προσπαθήστε ξανά";
+        $wrong = "Please try again";
     }
 }
 ?>
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input class="inputField" id="lastInput" type="password" name="password" placeholder="Password">
                         <?php
                           if(isset($wrong)) {
-                            echo "<p style=text-align: center;";
+                            echo "<p style='text-align: center;'";
                             echo $wrong;
                             echo "</p>";
                           }

@@ -12,7 +12,7 @@ else if (curveNum == 1) {
 else { curveText = "stable";}
 
 
-var popupContent = "<div class=popup> Polygon ID: " +layer.feature.properties.id + "<div class=popup> <br><br> Total parking spaces: " +layer.feature.properties.totalParkingSpaces + "<br><input type='number' id='num_spaces'><br><br><button type='button' onclick='update_spaces(num_spaces.value, polygonID);'>update parking spaces</button>" + "<div class=popup> <br><br> Demand curve: " +curveText + "<br><select id='dem_curve' form='dem_curve_form'><option value='0'>city center</option><option value='1'>residential</option><option value='2'>stable</option></select><br><br><button type='button' onclick='update_curve(dem_curve.value, polygonID);'>update demand curve</button>";
+var popupContent = "<div class=popup> Polygon ID: " +layer.feature.properties.id + "<div class=popup> Polygon population: " +layer.feature.properties.population +  "<div class=popup> <br><br> Total parking spaces: " +layer.feature.properties.totalParkingSpaces + "<br><input type='number' id='num_spaces'><br><br><button type='button' onclick='update_spaces(num_spaces.value, polygonID);'>update parking spaces</button>" + "<div class=popup> <br><br> Demand curve: " +curveText + "<br><select id='dem_curve' form='dem_curve_form'><option value='0'>city center</option><option value='1'>residential</option><option value='2'>stable</option></select><br><br><button type='button' onclick='update_curve(dem_curve.value, polygonID);'>update demand curve</button>";
 
 
 layer.bindPopup(popupContent);

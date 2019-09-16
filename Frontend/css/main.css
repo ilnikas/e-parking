@@ -6,7 +6,7 @@ html {
 
 body {
     font-size: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: sans-serif, Arial, Helvetica;
     margin: 0;
     padding: 0;
 }
@@ -87,7 +87,7 @@ body {
     margin-right: 7px;
     padding: 6px;
     outline: 0;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: sans-serif, Haettenschweiler, 'Arial Narrow Bold';
 }
 
 .dropdownLink:active {
@@ -137,7 +137,7 @@ body {
     color: white;
     border-radius: 50px;
     outline: 0;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: sans-serif, Haettenschweiler, 'Arial Narrow Bold';
 }
 
 
@@ -160,7 +160,7 @@ body {
     border: 1px solid black;
 	border-radius: 20px;
     padding: 5px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: sans-serif, Haettenschweiler, 'Arial Narrow Bold';
     bottom: 20vh;
 }
 
@@ -191,7 +191,7 @@ body {
         text-decoration: none;
         text-align: right;
         color: white;
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-family: sans-serif, Haettenschweiler, 'Arial Narrow Bold';
         padding-right: 1vw;
         padding-left: 1vw;
         font-size: 0.9em;
@@ -298,10 +298,15 @@ body {
     padding: 8px;
     border-radius: 10px;
     margin-bottom: 0;
+    cursor: pointer;
 }
 
 #setTimeButton:active {
     background-color: #555555;
+}
+
+#setTimeButton:hover{
+    background-color: #CCCCCC;
 }
 
 
