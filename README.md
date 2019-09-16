@@ -30,8 +30,4 @@ Simulation is executed for a specified time. For each block (polygon) a demand p
 
 ### Accessing the website
 To view the website follow <a href="http://snf-869308.vm.okeanos.grnet.gr/">this</a> link. <br>
-You can also access the admin page. Credentials are: 
-- Username: admin
-- Password: admin
 
-For obvious reasons the *Load KML file* and *Delete data* features have been disabled.
