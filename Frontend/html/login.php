@@ -19,6 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" type="img/png" href="../css/img/fav192.png" sizes="192x192" />
+		<link rel="apple-touch-icon" href="../css/img/fav180.png" sizes="180x180" />
+		<link rel="icon" type="img/png" href="../css/img/fav32.png" sizes="32x32" />
+		<link rel="icon" type="img/png" href="../css/img/fav16.png" sizes="16x16" />
         <link rel="stylesheet" href="../css/login.css" type="text/css">
         <title>
             e-parking | Login
